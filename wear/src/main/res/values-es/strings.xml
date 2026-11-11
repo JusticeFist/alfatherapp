@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Live.kt -->
+    <string name="live_phone_not_connected">El teléfono no está conectado.</string>
+    <string name="live_call_failed">No se pudo llamar.</string>
+
+    <!-- MainActivity.kt -->
+    <string name="mainactivity_phone_not_connected">El teléfono no está conectado.</string>
+    <string name="mainactivity_ask_prompt">Pregúntale a %1$s</string>
+    <string name="mainactivity_question">Pregunta</string>
+    <string name="mainactivity_no_mic">Sin permiso de micrófono no se puede llamar.</string>
+    <string name="mainactivity_ask">Preguntar</string>
+    <string name="mainactivity_talk_live">Hablar en vivo</string>
+    <string name="mainactivity_heard">«%1$s»</string>
+    <string name="mainactivity_next">Próximo: %1$s</string>
+    <string name="mainactivity_read_aloud">Leer en voz alta</string>
+    <string name="mainactivity_answers_channel">Respuestas</string>
+    <string name="mainactivity_connecting">Conectando…</string>
+    <string name="mainactivity_speaking">Hablando…</string>
+    <string name="mainactivity_listening">Te escucho</string>
+    <string name="mainactivity_unmute">Activar micrófono</string>
+    <string name="mainactivity_mute">Silenciar</string>
+    <string name="mainactivity_hang_up">Colgar</string>
+
+    <!-- Surfaces.kt -->
+    <string name="surfaces_working">Trabajando…</string>
+    <string name="surfaces_no_events">Sin eventos próximos</string>
+    <string name="surfaces_ask">Preguntar</string>
+    <string name="surfaces_preview_event">Dentista · 15:00</string>
+    <string name="surfaces_name_working">%1$s trabajando</string>
+</resources>

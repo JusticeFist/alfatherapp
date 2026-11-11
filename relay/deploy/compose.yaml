@@ -1,0 +1,31 @@
+# Docker Compose for the relay with FCM. From this folder:
+#   mkdir -p data secrets && sudo chown 1000:1000 data
+#   cp ~/Downloads/<firebase-key>.json secrets/service-account.json && chmod 600 secrets/service-account.json
+#   PUBLIC_URL=http://<this host's LAN IP>:8787 docker compose up -d --build
+services:
+  relay:
+    build:
+      context: ..
+    container_name: allfather-push-relay
+    restart: unless-stopped
+    ports:
+      - "8787:8787"
+    environment:
+      HOST: 0.0.0.0
+      PORT: 8787
+      PUBLIC_URL: ${PUBLIC_URL}
+      DATA_PATH: /data/relay.json
+      FCM_SERVICE_ACCOUNT: /secrets/service-account.json
+      RELAY_TOKEN_PROOF: required
+      TRUST_PROXY: ${TRUST_PROXY:-}
+    volumes:
+      # Owned by the image's node user (uid 1000): a directory Docker creates is root's and the relay can't write it.
+      - ./data:/data
+      - ./secrets/service-account.json:/secrets/service-account.json:ro
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp:size=16m,mode=1777
+    cap_drop:
+      - ALL

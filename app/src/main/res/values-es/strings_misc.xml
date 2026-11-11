@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- HermesApp -->
+    <string name="hermesapp_assistant_chat">Asistente</string>
+    <string name="hermesapp_sign_in_first">Abre la app e inicia sesión.</string>
+    <string name="hermesapp_live_off">Gemini Live está desactivado en Ajustes > Voz.</string>
+
+    <!-- MainActivity -->
+    <string name="mainactivity_unlock_title">Desbloquear AllFather</string>
+    <string name="mainactivity_mic_needed">Hace falta el micrófono para hablar con %1$s.</string>
+    <string name="mainactivity_locked">Bloqueado</string>
+    <string name="mainactivity_unlock">Desbloquear</string>
+
+    <!-- login/LoginScreen -->
+    <string name="loginscreen_need_credentials">Escribe usuario y contraseña</string>
+    <string name="loginscreen_password_only">Este dashboard solo ofrece usuario y contraseña.</string>
+    <string name="loginscreen_connect_failed">No se pudo conectar</string>
+    <string name="loginscreen_welcome_back">Bienvenido de nuevo</string>
+    <string name="loginscreen_connect_agent">Conecta tu agente</string>
+    <string name="loginscreen_server">Servidor</string>
+    <string name="loginscreen_server_hint">maquina.tailnet.ts.net:9119</string>
+    <string name="loginscreen_paste">Pegar</string>
+    <string name="loginscreen_scan">Escanear código</string>
+    <string name="loginscreen_username">Usuario</string>
+    <string name="loginscreen_username_hint">usuario</string>
+    <string name="loginscreen_password">Contraseña</string>
+    <string name="loginscreen_password_hint">contraseña</string>
+    <string name="loginscreen_hide">Ocultar</string>
+    <string name="loginscreen_show">Mostrar</string>
+    <string name="loginscreen_connect">Conectar</string>
+    <string name="loginscreen_continue_with">Continuar con %1$s</string>
+    <string name="loginscreen_other_methods">Otros métodos de inicio de sesión</string>
+    <string name="loginscreen_hide_advanced">Ocultar opciones avanzadas</string>
+    <string name="loginscreen_advanced">Opciones avanzadas</string>
+    <string name="loginscreen_secret_hint">secreto</string>
+    <string name="loginscreen_cf_https">El token de Cloudflare solo se envía por HTTPS.</string>
+    <string name="loginscreen_proxy_headers">Headers de proxy</string>
+    <string name="loginscreen_headers_hint">Uno por línea, Nombre: valor.</string>
+    <string name="loginscreen_need_help">¿Necesitas ayuda para conectar?</string>
+    <string name="loginscreen_try_demo">Probar la demo (sin servidor)</string>
+    <string name="loginscreen_stays_here">Tu inicio de sesión se queda en este dispositivo.</string>
+    <string name="loginscreen_help_title">Ayuda para conectar</string>
+    <string name="loginscreen_help_easy">La forma fácil: pídeselo a tu Hermes.</string>
+    <string name="loginscreen_help_step1">Instala Tailscale en el teléfono e inicia sesión (gratis; deja que el teléfono llegue a Hermes desde cualquier sitio).</string>
+    <string name="loginscreen_help_step2">Copia el texto de abajo y mándaselo a tu Hermes por Telegram, Discord, la terminal o el chat del dashboard.</string>
+    <string name="loginscreen_help_step3">Hermes te responde con la dirección, el usuario, la contraseña y un enlace. Toca el enlace o escanea el QR con «Escanear código».</string>
+    <string name="loginscreen_copied">Copiado</string>
+    <string name="loginscreen_copy_text">Copiar texto</string>
+    <string name="loginscreen_help_home">¿Solo en casa? Puedes saltarte Tailscale: usa la IP local del equipo de Hermes y el puerto, por ejemplo http://192.168.1.10:9119.</string>
+
+    <!-- login/OAuth -->
+    <string name="oauth_done">Listo. Vuelve a la app de AllFather.</string>
+    <string name="oauth_failed">No se completó el inicio de sesión.</string>
+    <string name="oauth_provider_failed">El proveedor no completó el inicio de sesión</string>
+
+    <!-- push/E2E: a push the phone can't open -->
+    <string name="e2e_approval_title">Aprobación pendiente</string>
+    <string name="e2e_approval_body">%1$s espera tu aprobación.</string>
+    <string name="e2e_input_title">%1$s necesita una respuesta</string>
+    <string name="e2e_input_body">%1$s necesita que respondas para seguir.</string>
+    <string name="e2e_failed_title">Turno fallido</string>
+    <string name="e2e_failed_body">No se pudo completar un turno de %1$s.</string>
+    <string name="e2e_background_title">Tarea en segundo plano terminada</string>
+    <string name="e2e_background_body">Una tarea delegada ha terminado.</string>
+    <string name="e2e_call_title">%1$s quiere hablar</string>
+    <string name="e2e_call_body">Toca para hablar con %1$s.</string>
+    <string name="e2e_phone_title">%1$s tiene un cambio para ti</string>
+    <string name="e2e_phone_body">Toca para revisarlo en la app.</string>
+    <string name="e2e_ready_title">Respuesta lista</string>
+    <string name="e2e_ready_body">%1$s ha terminado de responder.</string>
+
+    <!-- push/Progress -->
+    <string name="progress_using">Usando %1$s</string>
+    <string name="progress_tool_terminal">el terminal</string>
+    <string name="progress_tool_code">código</string>
+    <string name="progress_tool_files">archivos</string>
+    <string name="progress_tool_web">la web</string>
+    <string name="progress_tool_browser">el navegador</string>
+    <string name="progress_tool_agents">agentes</string>
+    <string name="progress_tool_memory">la memoria</string>
+    <string name="progress_tool_images">imágenes</string>
+    <string name="progress_tool_audio">audio</string>
+    <string name="progress_tool_planning">un plan</string>
+    <string name="progress_tool_schedule">la agenda</string>
+    <string name="progress_tool_messages">mensajes</string>
+    <string name="progress_tool_skills">una skill</string>
+    <string name="progress_tool_connector">un conector</string>
+    <string name="progress_tool_phone">el teléfono</string>
+    <string name="progress_tool_home">la casa</string>
+    <string name="progress_tool_tools">herramientas</string>
+    <string name="progress_approval">Espera tu aprobación</string>
+    <string name="progress_input">Espera tu respuesta</string>
+    <string name="progress_done">Terminado</string>
+    <string name="progress_failed">Falló</string>
+    <string name="progress_stopped">Detenido</string>
+    <string name="progress_thinking">Pensando…</string>
+    <plurals name="progress_tools">
+        <item quantity="one">%d herramienta</item>
+        <item quantity="other">%d herramientas</item>
+    </plurals>
+    <string name="progress_context">contexto %1$d %%</string>
+    <string name="progress_channel">Progreso</string>
+    <string name="progress_channel_desc">Mientras tu IA trabaja en un chat</string>
+
+    <!-- push/PushService -->
+    <string name="pushservice_ch_attention">Aprobaciones y preguntas</string>
+    <string name="pushservice_ch_attention_desc">%1$s espera tu respuesta</string>
+    <string name="pushservice_ch_replies">Respuestas</string>
+    <string name="pushservice_ch_replies_desc">Respuestas y tareas terminadas</string>
+    <string name="pushservice_ch_other">Otros avisos</string>
+    <string name="pushservice_ch_other_desc">Fallos y otros avisos de %1$s</string>
+    <string name="pushservice_allow">Permitir</string>
+    <string name="pushservice_this_session">En esta sesión</string>
+    <string name="pushservice_always">Siempre</string>
+    <string name="pushservice_deny">Rechazar</string>
+    <string name="pushservice_reply">Responder</string>
+    <string name="pushservice_your_reply">Tu respuesta</string>
+    <string name="pushservice_open_to_reply">Abre la app para responder.</string>
+    <string name="pushservice_denied">Rechazado.</string>
+    <string name="pushservice_approved">Aprobado.</string>
+    <string name="pushservice_empty_reply">Respuesta vacía.</string>
+    <string name="pushservice_replied">Respondido: %1$s</string>
+    <string name="pushservice_send_failed">No se pudo enviar: %1$s</string>
+
+    <!-- push/PushState -->
+    <string name="pushstate_relay_https">El relay debe ser https:// o estar en la red local.</string>
+    <string name="pushstate_unknown_phone">El relay ya no conoce este teléfono. Desactiva y vuelve a activar las notificaciones.</string>
+    <string name="pushstate_no_firebase">El relay no tiene configurado Firebase (FCM_SERVICE_ACCOUNT).</string>
+    <string name="pushstate_token_check">El relay no pudo comprobar el token de este teléfono. Inténtalo de nuevo.</string>
+    <string name="pushstate_relay_code">El relay respondió %1$d.</string>
+    <string name="pushstate_relay_error">Error del relay: %1$s</string>
+    <string name="pushstate_no_token">Sin token FCM</string>
+    <string name="pushstate_enabled">Notificaciones activadas.</string>
+    <string name="pushstate_disabled">Notificaciones desactivadas en este teléfono.</string>
+    <string name="pushstate_error">Error</string>
+    <string name="pushstate_pair_unconfirmed">El plugin no confirmó el emparejado.</string>
+    <string name="pushstate_question_gone">Esa pregunta ya no está activa.</string>
+    <string name="pushstate_answered_elsewhere">Ya se respondió desde otro sitio.</string>
+
+    <!-- phone/PhoneChanges: a change card's line -->
+    <string name="phonechanges_add">Agregar «%1$s» · %2$s</string>
+    <string name="phonechanges_event">evento</string>
+    <string name="phonechanges_an_event">un evento</string>
+    <string name="phonechanges_update">Cambiar «%1$s»</string>
+    <string name="phonechanges_delete">Borrar «%1$s»</string>
+    <string name="phonechanges_alarm">Alarma «%1$s» · %2$s</string>
+    <string name="phonechanges_timer">Temporizador de %1$s</string>
+    <string name="phonechanges_cancel_alarm">Quitar la alarma «%1$s»</string>
+
+    <!-- phone/PhoneSync -->
+    <string name="phonesync_wipe_failed">No se pudo borrar en tu Hermes: %1$s</string>
+    <string name="phonesync_contact">Contacto</string>
+    <string name="phonesync_off">Apagado</string>
+    <string name="phonesync_error">Error: %1$s</string>
+    <string name="phonesync_calendar">Calendario</string>
+    <string name="phonesync_status">estado</string>
+    <string name="phonesync_dnd">No molestar</string>
+    <string name="phonesync_nothing">Nada compartido</string>
+
+    <!-- location/LocationSync -->
+    <string name="locationsync_wipe_failed">No se pudo borrar en tu Hermes: %1$s</string>
+    <string name="locationsync_no_fix">No se pudo saber dónde estás.</string>
+    <string name="locationsync_imprecise">La ubicación no es precisa (±%1$d m); intenta al aire libre.</string>
+    <string name="locationsync_off">Apagado</string>
+    <string name="locationsync_paused">En pausa</string>
+    <string name="locationsync_error">Error: %1$s</string>
+    <string name="locationsync_talking_and_background">Al hablar y en segundo plano</string>
+    <string name="locationsync_talking">Al hablar</string>
+    <string name="locationsync_background">En segundo plano</string>
+    <string name="locationsync_nothing">Nada compartido</string>
+    <plurals name="locationsync_places">
+        <item quantity="one">%d lugar</item>
+        <item quantity="other">%d lugares</item>
+    </plurals>
+    <string name="locationsync_precision_places">Solo lugares guardados</string>
+    <string name="locationsync_precision_area">Zona aproximada (~1 km)</string>
+    <string name="locationsync_precision_exact">Exacta</string>
+
+    <!-- health/HealthSync -->
+    <string name="healthsync_wipe_failed">No se pudo borrar en tu Hermes: %1$s</string>
+    <string name="healthsync_unavailable">Health Connect no está disponible</string>
+    <string name="healthsync_off">Apagado</string>
+    <string name="healthsync_error">Error: %1$s</string>
+    <string name="healthsync_cat_activity">actividad</string>
+    <string name="healthsync_cat_heart">corazón</string>
+    <string name="healthsync_cat_sleep">sueño</string>
+    <string name="healthsync_cat_workouts">entrenamientos</string>
+    <string name="healthsync_cat_body">cuerpo</string>
+    <string name="healthsync_cat_vitals">signos vitales</string>
+    <string name="healthsync_cat_fitness">condición física</string>
+
+    <!-- share/ShareLink -->
+    <string name="sharelink_key_lost">La llave de este teléfono cambió en tu Hermes.</string>
+    <string name="sharelink_no_key">Tu Hermes no dio llave</string>
+    <string name="sharelink_bad_host_key">Llave del host inválida</string>
+    <string name="sharelink_key_mismatch">La llave del host no coincide</string>
+
+    <!-- net/HermesClient -->
+    <string name="hermesclient_rpc_error">Error RPC</string>
+    <string name="hermesclient_login_proxy">Hay un proxy de inicio de sesión delante del dashboard; configura Cloudflare Access o headers.</string>
+    <string name="hermesclient_unexpected">Respuesta inesperada (¿es la dirección del dashboard de Hermes?)</string>
+    <string name="hermesclient_error_code">Error %1$d</string>
+    <string name="hermesclient_sign_in_again">Inicia sesión de nuevo</string>
+    <string name="hermesclient_sign_in_incomplete">El inicio de sesión no se completó (%1$d)</string>
+    <string name="hermesclient_wrong_credentials">Usuario o contraseña incorrectos</string>
+    <string name="hermesclient_too_many">Demasiados intentos, espera un minuto</string>
+    <string name="hermesclient_server_error">Error %1$d del servidor</string>
+    <string name="hermesclient_no_ticket">El servidor no dio ticket</string>
+    <string name="hermesclient_no_answer_connecting">Hermes no respondió al conectar</string>
+    <string name="hermesclient_connection_closed">Conexión cerrada</string>
+    <string name="hermesclient_connection_lost">Conexión perdida</string>
+    <string name="hermesclient_ws_refused">WebSocket rechazado (%1$d)</string>
+    <string name="hermesclient_no_connection">Sin conexión con Hermes</string>
+    <string name="hermesclient_timeout">Hermes no respondió a tiempo (%1$s)</string>
+
+    <!-- ui/shell/Shell -->
+    <string name="shell_back">Volver</string>
+    <string name="shell_voice">Voz</string>
+
+    <!-- alerts/Alerts -->
+    <string name="alerts_off">Apagado</string>
+    <string name="alerts_kind_leave">salir a tiempo</string>
+    <string name="alerts_kind_home">casa</string>
+    <string name="alerts_kind_battery">batería</string>
+    <string name="alerts_kind_conflicts">choques</string>
+    <string name="alerts_none">Nada</string>
+    <string name="alerts_event_at">«%1$s» a las %2$s</string>
+    <string name="alerts_others_more">%1$s y %2$d más</string>
+    <string name="alerts_clash_two">Se te cruzan dos eventos</string>
+    <string name="alerts_clash_many">Se te cruzan %1$d eventos</string>
+    <string name="alerts_clash_body">«%1$s» %2$s–%3$s choca con %4$s.</string>
+    <string name="alerts_battery_title">Batería al %1$d %%</string>
+    <string name="alerts_battery_body">Tienes «%1$s» a las %2$s. Cárgalo antes de salir.</string>
+    <string name="alerts_on_foot">a pie</string>
+    <string name="alerts_by_car">en coche</string>
+    <string name="alerts_leave_in">Sal en %1$d min</string>
+    <string name="alerts_leave_now">Sal ya</string>
+    <string name="alerts_leave_body">«%1$s» a las %2$s · ~%3$d min %4$s</string>
+    <string name="alerts_battery_note">Batería al %1$d %%.</string>
+    <string name="alerts_left_home">Saliste de casa</string>
+    <string name="alerts_next">Siguiente: «%1$s» a las %2$s.</string>
+    <string name="alerts_next_at">Siguiente: «%1$s» a las %2$s en %3$s.</string>
+    <string name="alerts_home_now">Ya en casa</string>
+    <string name="alerts_tomorrow">Mañana empiezas con «%1$s» a las %2$s.</string>
+    <string name="alerts_untitled">(sin título)</string>
+    <string name="alerts_channel">Avisos de %1$s</string>
+    <string name="alerts_channel_desc">Salir a tiempo, casa, batería y choques del calendario</string>
+    <string name="alerts_directions">Cómo llegar</string>
+
+    <!-- settings/PulsePage -->
+    <string name="pulsepage_topic_commitment">Compromiso</string>
+    <string name="pulsepage_topic_promise">Promesa</string>
+    <string name="pulsepage_topic_date">Fecha</string>
+    <string name="pulsepage_followup">Seguimiento</string>
+    <string name="pulsepage_topic_reminder">Recordatorio</string>
+    <string name="pulsepage_topic_watch">Para vigilar</string>
+    <string name="pulsepage_topic_intention">Intención</string>
+    <string name="pulsepage_topic_interest">Interés</string>
+    <string name="pulsepage_topic_fact">Dato</string>
+    <string name="pulsepage_topic_other">Otro</string>
+    <string name="pulsepage_noticed">Notado</string>
+    <string name="pulsepage_report">Reporte</string>
+    <string name="pulsepage_brief">Resumen de la mañana</string>
+    <string name="pulsepage_update_plugin">Actualiza el plugin de AllFather para usar esto.</string>
+    <string name="pulsepage_failed">No se pudo: %1$s</string>
+    <string name="pulsepage_chat">Conversación de Pulse</string>
+    <string name="pulsepage_eyebrow">Proactivo</string>
+    <string name="pulsepage_help">Lo que %1$s notó por su cuenta. Califica cada tarjeta para que aprenda qué vale la pena contarte. «Ahora no» la quita sin enseñarle nada y deja ese tema en paz una semana.</string>
+    <string name="pulsepage_no_cards">Todavía no hay tarjetas.</string>
+    <string name="pulsepage_nothing_to_rate">Nada por calificar por ahora.</string>
+    <string name="pulsepage_to_rate">Por calificar</string>
+    <string name="pulsepage_earlier">Anteriores</string>
+    <string name="pulsepage_done">Hecho</string>
+    <string name="pulsepage_useful">Útil</string>
+    <string name="pulsepage_not_useful">No útil</string>
+    <string name="pulsepage_talk">Conversar sobre esto</string>
+    <string name="pulsepage_undo">Deshacer</string>
+    <string name="pulsepage_not_now">Ahora no</string>
+
+    <!-- settings/NotificationsPage -->
+    <string name="notificationspage_this_phone">Este teléfono</string>
+    <string name="notificationspage_no_firebase">Esta versión de la app no tiene configuración de Firebase (google-services.json).</string>
+    <string name="notificationspage_how">Las notificaciones llegan por tu relay (allfather-push-relay) a través de Firebase. El contenido va cifrado de extremo a extremo: el relay y Google solo ven un sobre.</string>
+    <string name="notificationspage_relay_address">Dirección del relay</string>
+    <string name="notificationspage_save">Guardar</string>
+    <string name="notificationspage_blocked">Registrado, pero Android tiene las notificaciones de AllFather desactivadas.</string>
+    <string name="notificationspage_on">Activadas en este teléfono.</string>
+    <string name="notificationspage_off">Desactivadas en este teléfono.</string>
+    <string name="notificationspage_enable">Activar notificaciones</string>
+    <string name="notificationspage_disable">Desactivar</string>
+    <string name="notificationspage_this_profile">Este perfil</string>
+    <string name="notificationspage_plugin_old">El plugin de AllFather de este dashboard no permite emparejar desde la app. Actualízalo en Ajustes > Plugin de AllFather.</string>
+    <string name="notificationspage_paired_e2e">Emparejado con este teléfono · cifrado de extremo a extremo</string>
+    <string name="notificationspage_paired_plain">Emparejado con este teléfono · sin cifrado todavía</string>
+    <string name="notificationspage_paired_other">Este perfil está emparejado con otro dispositivo. Emparejarlo aquí hace que sus avisos lleguen a este teléfono.</string>
+    <string name="notificationspage_pair_here">Emparejar aquí</string>
+    <string name="notificationspage_pair_profile">Emparejar este perfil</string>
+    <string name="notificationspage_paired_count">%1$d de %2$d perfiles emparejados con este teléfono: los avisos de tus bots también llegan aquí.</string>
+    <string name="notificationspage_notices">Avisos</string>
+    <string name="notificationspage_approvals">Aprobaciones</string>
+    <string name="notificationspage_approvals_help">Cuando %1$s espera tu permiso.</string>
+    <string name="notificationspage_questions">Preguntas</string>
+    <string name="notificationspage_questions_help">Cuando %1$s necesita una respuesta.</string>
+    <string name="notificationspage_replies">Respuestas listas</string>
+    <string name="notificationspage_replies_help">Cuando termina una respuesta.</string>
+    <string name="notificationspage_failed_turns">Turnos fallidos</string>
+    <string name="notificationspage_background_tasks">Tareas en segundo plano</string>
+    <string name="notificationspage_answer_from_notice">Responder desde el aviso</string>
+    <string name="notificationspage_answer_from_notice_help">Aprobaciones y preguntas con botones en la notificación.</string>
+    <string name="notificationspage_previews">Vista previa sin cifrar</string>
+    <string name="notificationspage_previews_help">Solo para perfiles sin clave E2E: el relay ve el texto del aviso.</string>
+
+    <!-- settings/PhonePage -->
+    <string name="phonepage_no_calendar_permission">Sin permiso de calendario, %1$s no verá tu agenda.</string>
+    <string name="phonepage_no_write_permission">Sin permiso de escritura, %1$s solo podrá leer tu calendario.</string>
+    <string name="phonepage_no_contacts_permission">Sin permiso de contactos, %1$s no puede leer los que elijas.</string>
+    <string name="phonepage_this_phone">Este teléfono</string>
+    <string name="phonepage_help">%1$s ve lo que actives aquí, cifrado con una llave que solo tienen este teléfono y tu Hermes. Al apagarlo se borra de tu Hermes.</string>
+    <string name="phonepage_share_with">Compartir con %1$s</string>
+    <string name="phonepage_syncing">Sincronizando…</string>
+    <string name="phonepage_sync_now">Sincronizar ahora</string>
+    <string name="phonepage_calendar">Calendario</string>
+    <string name="phonepage_calendar_help">Tus eventos de los últimos 7 días y los próximos %1$d, de todos los calendarios del teléfono (Google incluido).</string>
+    <string name="phonepage_calendar_off">Apagado</string>
+    <string name="phonepage_calendar_read">Solo leer</string>
+    <string name="phonepage_calendar_full">Leer y agregar</string>
+    <string name="phonepage_allow_adding">Dar permiso para agregar eventos</string>
+    <string name="phonepage_cards_help">%1$s te propone eventos con una tarjeta en el chat; tú decides.</string>
+    <string name="phonepage_allow_calendar">Dar permiso de calendario</string>
+    <string name="phonepage_ahead">Hacia adelante</string>
+    <plurals name="phonepage_days">
+        <item quantity="one">%d día</item>
+        <item quantity="other">%d días</item>
+    </plurals>
+    <string name="phonepage_details">Detalles</string>
+    <string name="phonepage_details_help">Notas de los eventos.</string>
+    <string name="phonepage_contacts">Contactos</string>
+    <string name="phonepage_contacts_help">Solo los que elijas, para que %1$s sepa a quién te refieres (teléfonos, correos, cumpleaños).</string>
+    <string name="phonepage_remove">Quitar</string>
+    <string name="phonepage_add_contact">Añadir contacto</string>
+    <string name="phonepage_alarms_card">Alarmas y cambios</string>
+    <string name="phonepage_alarms">Alarmas y temporizadores</string>
+    <string name="phonepage_alarms_help">%1$s puede ponerlos en la app Reloj (y quitar los que puso).</string>
+    <string name="phonepage_auto_add">Agregar sin preguntar</string>
+    <string name="phonepage_auto_add_help">Eventos, alarmas y temporizadores nuevos entran sin tarjeta; cambiar o borrar siempre pregunta.</string>
+    <string name="phonepage_status">Estado</string>
+    <string name="phonepage_battery">Batería y conexión</string>
+    <string name="phonepage_battery_help">Batería, carga, ahorro de energía, red y si usas audífonos.</string>
+    <string name="phonepage_dnd">No molestar</string>
+    <string name="phonepage_dnd_help">Si tienes activado No molestar, para que no te interrumpa.</string>
+    <string name="phonepage_sync_failed">No se pudo sincronizar: %1$s</string>
+    <string name="phonepage_never_synced">Aún sin sincronizar.</string>
+    <string name="phonepage_last_sync">Última sincronización: %1$s</string>
+    <plurals name="phonepage_events_on_host">
+        <item quantity="one">%d evento en tu Hermes</item>
+        <item quantity="other">%d eventos en tu Hermes</item>
+    </plurals>
+
+    <!-- settings/LocationPage -->
+    <string name="locationpage_no_permission">Sin permiso de ubicación, %1$s no sabrá dónde estás.</string>
+    <string name="locationpage_need_always">Para el segundo plano elige «Allow all the time» (Permitir todo el tiempo) en el permiso de ubicación.</string>
+    <string name="locationpage_location">Ubicación</string>
+    <string name="locationpage_help">%1$s sabe dónde estás solo como lo elijas aquí, cifrado para tu Hermes. Las coordenadas de tus lugares nunca salen del teléfono. Al apagarlo se borra de tu Hermes.</string>
+    <string name="locationpage_share_with">Compartir con %1$s</string>
+    <string name="locationpage_error">Error: %1$s</string>
+    <string name="locationpage_paused_until">En pausa hasta %1$s</string>
+    <string name="locationpage_last_sent">Último envío: %1$s</string>
+    <string name="locationpage_never_sent">Aún sin enviar.</string>
+    <string name="locationpage_allow">Dar permiso de ubicación</string>
+    <string name="locationpage_unpause">Quitar la pausa</string>
+    <string name="locationpage_pause_hour">Pausar 1 hora</string>
+    <string name="locationpage_talking">Al hablar</string>
+    <string name="locationpage_talking_switch">Cuando escribes o llamas</string>
+    <string name="locationpage_talking_help">Envía dónde estás con cada mensaje o llamada, para respuestas como «¿qué hay cerca?».</string>
+    <string name="locationpage_precision">Precisión</string>
+    <string name="locationpage_background">En segundo plano</string>
+    <string name="locationpage_always">Siempre</string>
+    <string name="locationpage_always_help">Llegadas y salidas de tus lugares, movimientos grandes y «¿dónde está mi teléfono?», aunque la app esté cerrada.</string>
+    <string name="locationpage_places">Lugares guardados</string>
+    <string name="locationpage_places_help">%1$s ve el nombre del lugar, no sus coordenadas. Un lugar privado solo aparece como «Lugar privado».</string>
+    <string name="locationpage_private_tag">privado</string>
+    <string name="locationpage_remove">Quitar</string>
+    <string name="locationpage_name_hint">Nombre (ej. Casa)</string>
+    <string name="locationpage_kind">Tipo</string>
+    <string name="locationpage_private">Privado</string>
+    <string name="locationpage_private_help">Solo su nombre genérico y nada de coordenadas cuando estés ahí.</string>
+    <string name="locationpage_locating">Ubicando…</string>
+    <string name="locationpage_save_here">Guardar dónde estoy ahora</string>
+    <string name="locationpage_place">Lugar</string>
+    <string name="locationpage_retention">Cuánto lo guarda tu Hermes</string>
+    <string name="locationpage_history">Historial</string>
+    <string name="locationpage_latest_only">Solo la última</string>
+    <plurals name="locationpage_days">
+        <item quantity="one">%d día</item>
+        <item quantity="other">%d días</item>
+    </plurals>
+    <string name="locationpage_one_year">1 año</string>
+    <string name="locationpage_kind_home">Casa</string>
+    <string name="locationpage_kind_work">Trabajo</string>
+    <string name="locationpage_kind_gym">Gimnasio</string>
+    <string name="locationpage_kind_school">Escuela</string>
+    <string name="locationpage_kind_other">Otro</string>
+    <string name="locationpage_activity">Lo que hizo %1$s</string>
+    <string name="locationpage_loading">Cargando…</string>
+    <string name="locationpage_no_rules">No tiene avisos por lugar. Pídeselo: «avísame cuando llegue a casa».</string>
+    <string name="locationpage_recent_reads">Lecturas recientes:</string>
+
+    <!-- settings/HealthPage -->
+    <string name="healthpage_help_activity">Pasos, distancia, calorías activas, pisos y minutos de ejercicio.</string>
+    <string name="healthpage_help_heart">Ritmo cardiaco, en reposo y variabilidad.</string>
+    <string name="healthpage_help_sleep">Cada noche: horas, fases y despertares.</string>
+    <string name="healthpage_help_workouts">Tus entrenamientos con duración y pulso.</string>
+    <string name="healthpage_help_body">Peso, grasa corporal y estatura.</string>
+    <string name="healthpage_help_vitals">Oxígeno en sangre, respiración y presión arterial.</string>
+    <string name="healthpage_help_fitness">VO₂ máx.</string>
+    <string name="healthpage_no_permission">Sin permisos de Health Connect, %1$s no verá tu salud.</string>
+    <string name="healthpage_no_activity_permission">Sin el permiso «Actividad física», el teléfono no puede estimar tu sueño.</string>
+    <string name="healthpage_health">Salud</string>
+    <string name="healthpage_unavailable">Health Connect no está disponible en este teléfono. Instálalo o actualízalo desde Play Store.</string>
+    <string name="healthpage_help">%1$s lee de Health Connect, donde escriben tu reloj, Fitbit, Samsung Health y otras apps. Va cifrado a tu Hermes y al apagarlo se borra de ahí.</string>
+    <string name="healthpage_share_with">Compartir con %1$s</string>
+    <string name="healthpage_sync_failed">No se pudo sincronizar: %1$s</string>
+    <string name="healthpage_last_sync">Última sincronización: %1$s</string>
+    <plurals name="healthpage_rows_on_host">
+        <item quantity="one">%d dato en tu Hermes</item>
+        <item quantity="other">%d datos en tu Hermes</item>
+    </plurals>
+    <string name="healthpage_never_synced">Aún sin sincronizar.</string>
+    <string name="healthpage_syncing">Sincronizando…</string>
+    <string name="healthpage_sync_now">Sincronizar ahora</string>
+    <string name="healthpage_what">Qué comparte</string>
+    <string name="healthpage_missing_permission">Falta permiso: tócalo de nuevo.</string>
+    <string name="healthpage_phone_sleep">Estimar el sueño con el teléfono</string>
+    <string name="healthpage_phone_sleep_help">Si no duermes con el reloj: Google Play services lo calcula por si el teléfono queda quieto, la luz y cuándo dejas de usarlo. Sin fases; la primera noche llega la mañana siguiente.</string>
+    <string name="healthpage_history">Historial al empezar</string>
+    <plurals name="healthpage_days">
+        <item quantity="one">%d día</item>
+        <item quantity="other">%d días</item>
+    </plurals>
+    <string name="healthpage_one_year">1 año</string>
+
+    <!-- settings/AlertsPage -->
+    <string name="alertspage_notices">Avisos</string>
+    <string name="alertspage_help">%1$s te avisa sin que preguntes. Se calcula en el teléfono con tu calendario, tu ubicación y la batería; no sale nada a tu Hermes. Los avisos también llegan al reloj.</string>
+    <string name="alertspage_notices_from">Avisos de %1$s</string>
+    <string name="alertspage_allow_calendar">Dar permiso de calendario</string>
+    <string name="alertspage_what">Qué avisa</string>
+    <string name="alertspage_leave">Salir a tiempo</string>
+    <string name="alertspage_leave_help">Para los eventos con lugar: «Sal en %1$d min» según dónde estás (estimado, sin tráfico), con «Cómo llegar».</string>
+    <string name="alertspage_home">Casa</string>
+    <string name="alertspage_home_help">Al salir, tu siguiente evento; al llegar, con qué empiezas mañana. Usa los lugares de tipo Casa de Ubicación con el segundo plano activado.</string>
+    <string name="alertspage_battery">Batería baja</string>
+    <string name="alertspage_battery_help" formatted="false">25 % o menos, sin cargar, y un evento en las próximas 2 horas.</string>
+    <string name="alertspage_conflicts">Choques</string>
+    <string name="alertspage_conflicts_help">Dos eventos que se cruzan en las próximas 24 horas.</string>
+</resources>

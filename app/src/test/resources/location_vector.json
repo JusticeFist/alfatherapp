@@ -1,0 +1,38 @@
+{
+  "host_private": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8",
+  "host_public": "j0DFrbaPJWJK5bIU6nZ6bslNgp09e14a0bpvPiE4KF8",
+  "device_private": "ICEiIyQlJicoKSorLC0uLzAxMjM0NTY3ODk6Ozw9Pj8",
+  "device_public": "NYBy1jZYgNGu6jKa35EhODhR7SGijjt16WXQ0s0WYlQ",
+  "device_id": "device-vector-1",
+  "batch_id": "batch-vector-1",
+  "kid": "4186c0bc93b7b264b5991464ab3e4c1f",
+  "key": "e97fd9902f44b9a9c5ffacd40612f58a471a56b5ab28c6e66f87efc04840fa6e",
+  "aad": "conduit-location/1\ningest\nkid=4186c0bc93b7b264b5991464ab3e4c1f\ndev=device-vector-1\nbatch=batch-vector-1",
+  "nonce": "AAAAAAAAAAAAAAAA",
+  "plaintext": "{\"batch_id\":\"batch-vector-1\"}",
+  "ct": "upKO2AMUfh95gixFbp-_E9hsTT76TlUyHHlwzdREWwCk0Gf-Nr6Oz98FPEP_",
+  "voice": {
+    "call_id": "call-vector-1",
+    "request_key": "55cf19b6e1118491dc136b9c94af8af83891b19673744e64c44200411ea93424",
+    "answer_key": "d0c6c9aa90c735b1bcf78368794430d41599835b930730a7ad288fc4a010d53d",
+    "request_aad": "conduit-location/1\nvoice-request\ntool=conduit_location\nkid=4186c0bc93b7b264b5991464ab3e4c1f\ndev=device-vector-1\ncall=call-vector-1",
+    "answer_aad": "conduit-location/1\nvoice-answer\ntool=conduit_location\nkid=4186c0bc93b7b264b5991464ab3e4c1f\ndev=device-vector-1\ncall=call-vector-1",
+    "nonce": "AAAAAAAAAAAAAAAA",
+    "request": "{\"call_id\":\"call-vector-1\",\"args\":{\"action\":\"now\"},\"provider\":\"gemini-live\"}",
+    "request_ct": "Pz9gGtPpraVru4dOPXv0TcJEUmj6vNdCFECj8qkccvaUZOZDCGdFpfh-OY-1QHSBAVebQ0JZuQjZ0WpA5M5eiv7WJvwXkjdfpT0FJQHgX7j13RSFFKcJR1KMReU",
+    "answer": "{\"call_id\":\"call-vector-1\",\"result\":{\"ok\":true}}",
+    "answer_ct": "4L3Edq2Pqul5L7IkSFV1mcpEe62ksOCr_58lP-hpj0EifhOgs7WlfcyZHScBjna8zBbtma66vY4xJQ6FNc_YzA"
+  },
+  "maps": {
+    "id": "m_vector0123456789abcd",
+    "request_key": "b56fa57113c019f2b8d9350fb751e9df8202ecc297577700df829f70dcb51c02",
+    "answer_key": "ae7dd388abc512517a706da57dc4908c316adbdcde58e78de7b4447901f7b71c",
+    "request_aad": "conduit-location/1\nmaps-request\nkid=4186c0bc93b7b264b5991464ab3e4c1f\ndev=device-vector-1\nid=m_vector0123456789abcd",
+    "answer_aad": "conduit-location/1\nmaps-answer\nkid=4186c0bc93b7b264b5991464ab3e4c1f\ndev=device-vector-1\nid=m_vector0123456789abcd",
+    "nonce": "AAAAAAAAAAAAAAAA",
+    "request": "{\"id\":\"m_vector0123456789abcd\",\"action\":\"search\",\"query\":\"pharmacy\",\"near\":{\"me\":true},\"limit\":3,\"detail\":\"area\"}",
+    "request_ct": "3KzdgIkgGzXth_u6OLG69KJdOHs-ZpQ1zZiDXxDHK9uZ0AtkxMhgmNkhL41iwDnHpQXzGDbN22lEZecj-9nl0soF3qC-4eEsiWmQZe-P4WbV9--vJ3krWoZX9yXm9RYEbvtTeAwlewwfp9yGDQleQaQJVr149SEGWfbr-P0j7qze",
+    "answer": "{\"error\":\"paused\",\"id\":\"m_vector0123456789abcd\",\"note\":\"x\",\"ok\":false}",
+    "answer_ct": "yzg2DSNRs2O4KP-JqCiLxMOu8K8CJxxAedJ7XQZOXPKq6QkWnaDPHRwIucRhLCk52UiCzk_wayZV9utToCcaOzy2na1WTgGCDfBCPTvIe-HYvYTYfhY"
+  }
+}

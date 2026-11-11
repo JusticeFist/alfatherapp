@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- AllFather canvas graphite: launcher background and splash. -->
+    <color name="af_canvas">#FF0F0F10</color>
+    <!-- The rest of ui/theme/Theme.kt's palette for what lives outside Compose: widget, shortcut icons, notifications. -->
+    <color name="af_surface">#FF1A1A1B</color>
+    <color name="af_ink">#FFE9EAEC</color>
+    <color name="af_ink_secondary">#99E9EAEC</color>
+    <color name="af_outline">#47E9EAEC</color>
+    <color name="af_hairline">#14FFFFFF</color>
+</resources>

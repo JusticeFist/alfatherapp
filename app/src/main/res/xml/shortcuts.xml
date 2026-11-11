@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Launcher long-press: New chat and Talk (static, launcher/Launcher.kt), then the recent chats that
+     sharesheet.publishChatShortcuts publishes, which are also Direct Share targets in the share sheet. -->
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut android:shortcutId="new_chat" android:enabled="true" android:icon="@drawable/ic_shortcut_chat"
+        android:shortcutShortLabel="@string/shortcut_new_chat">
+        <intent android:action="android.intent.action.VIEW" android:targetPackage="app.allfather" android:targetClass="app.hermesandroid.MainActivity">
+            <extra android:name="launch" android:value="new_chat" />
+        </intent>
+    </shortcut>
+    <shortcut android:shortcutId="talk" android:enabled="true" android:icon="@drawable/ic_shortcut_talk"
+        android:shortcutShortLabel="@string/shortcut_talk" android:shortcutLongLabel="@string/shortcut_talk_long">
+        <intent android:action="android.intent.action.VIEW" android:targetPackage="app.allfather" android:targetClass="app.hermesandroid.MainActivity">
+            <extra android:name="launch" android:value="talk" />
+        </intent>
+    </shortcut>
+    <share-target android:targetClass="app.hermesandroid.sharesheet.ShareActivity">
+        <data android:mimeType="*/*" />
+        <category android:name="app.hermesandroid.category.SHARE_CHAT" />
+    </share-target>
+</shortcuts>

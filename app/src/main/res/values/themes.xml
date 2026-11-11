@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Branded launch screen (core-splashscreen): the AllFather mark on graphite, then the app's own theme. -->
+    <style name="Theme.AllFather.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/af_canvas</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_fg</item>
+        <item name="postSplashScreenTheme">@android:style/Theme.Material.NoActionBar</item>
+    </style>
+</resources>

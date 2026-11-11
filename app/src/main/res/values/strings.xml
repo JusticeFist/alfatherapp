@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">AllFather</string>
+    <string name="control_description">Lets AllFather read the screen and tap, type and navigate for you, only when you call it from the assistant. It asks before sending, paying, buying or deleting, never touches passwords and doesn\'t act in banking or password apps.</string>
+    <string name="shortcut_new_chat">New chat</string>
+    <string name="shortcut_talk">Talk</string>
+    <string name="shortcut_talk_long">Talk with Gemini Live</string>
+    <string name="widget_description">Follow your latest chat, start a new one or talk live.</string>
+</resources>

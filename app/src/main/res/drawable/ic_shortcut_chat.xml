@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Launcher shortcut icon (Nuevo chat, AF.Compose): the app's Lucide glyph (ui/icons/AF.kt) in off-white on graphite, the 24-unit
+     glyph centred in a 72 viewport: half of the visible 72 of the 108 adaptive canvas. -->
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background><color android:color="@color/af_surface" /></background>
+    <foreground>
+        <vector android:width="108dp" android:height="108dp" android:viewportWidth="72" android:viewportHeight="72">
+            <group android:translateX="24" android:translateY="24">
+                <path android:pathData="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" android:strokeColor="@color/af_ink" android:strokeWidth="1.5"
+                    android:strokeLineCap="round" android:strokeLineJoin="round" />
+                <path android:pathData="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z" android:strokeColor="@color/af_ink" android:strokeWidth="1.5"
+                    android:strokeLineCap="round" android:strokeLineJoin="round" />
+            </group>
+        </vector>
+    </foreground>
+</adaptive-icon>

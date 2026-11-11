@@ -1,0 +1,32 @@
+# systemd USER unit for the AllFather push relay (FCM + optional APNs), without Docker.
+#
+#   mkdir -p ~/.config/systemd/user
+#   cp relay/deploy/allfather-push-relay.service ~/.config/systemd/user/
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now allfather-push-relay
+#   loginctl enable-linger "$USER"   # keep it running while logged out
+#   journalctl --user -u allfather-push-relay -f
+#
+# %h is your home directory. Adjust the checkout path if it lives elsewhere.
+
+[Unit]
+Description=AllFather push relay (FCM + APNs)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/allfather/relay
+EnvironmentFile=%h/.config/allfather-push-relay/relay.env
+ExecStart=/usr/bin/env node src/server.mjs
+Restart=on-failure
+RestartSec=5
+# The relay saves its state on SIGTERM before exiting.
+KillSignal=SIGTERM
+TimeoutStopSec=15
+UMask=0077
+NoNewPrivileges=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=default.target

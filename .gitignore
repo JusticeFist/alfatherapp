@@ -1,0 +1,16 @@
+.tools/
+.gradle/
+.kotlin/
+build/
+local.properties
+*.iml
+.idea/
+*.apk
+google-services.json
+*.jks
+*.keystore
+.env
+relay/node_modules/
+relay/data/
+service-account*.json
+.deathnote/

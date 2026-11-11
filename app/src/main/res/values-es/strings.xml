@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="control_description">Deja que AllFather lea la pantalla y toque, escriba y navegue por ti, solo cuando lo llamas desde el asistente. Te pregunta antes de enviar, pagar, comprar o borrar, nunca toca contraseñas y no actúa en apps de bancos ni de contraseñas.</string>
+    <string name="shortcut_new_chat">Nuevo chat</string>
+    <string name="shortcut_talk">Hablar</string>
+    <string name="shortcut_talk_long">Hablar con Gemini Live</string>
+    <string name="widget_description">Sigue tu último chat, empieza uno nuevo o habla en vivo.</string>
+</resources>

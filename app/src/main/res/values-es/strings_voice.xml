@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- voice/Dictation.kt -->
+    <string name="dictation_no_recognizer">Este teléfono no tiene reconocimiento de voz. Usa el de Hermes en Ajustes > Voz.</string>
+    <string name="dictation_not_heard">No te he oído. Toca el micro e inténtalo de nuevo.</string>
+    <string name="dictation_no_mic_permission">Falta el permiso del micrófono.</string>
+    <string name="dictation_needs_network">El reconocimiento necesita conexión. Usa el de Hermes en Ajustes > Voz.</string>
+    <string name="dictation_failed">El dictado falló (%1$d).</string>
+    <string name="dictation_mic_failed">No se pudo abrir el micrófono.</string>
+    <string name="dictation_too_short">Grabación demasiado corta.</string>
+    <string name="dictation_no_transcript">Hermes no devolvió lo que dijiste.</string>
+    <string name="dictation_transcribe_failed">No se pudo transcribir: %1$s</string>
+
+    <!-- voice/GeminiLive.kt -->
+    <string name="geminilive_checking">Comprobando…</string>
+    <string name="geminilive_available">Disponible · %1$s</string>
+    <string name="geminilive_no_api_key">Falta la clave de Gemini en el host (GEMINI_API_KEY en ~/.hermes/.env).</string>
+    <string name="geminilive_plugin_missing">El plugin de AllFather de este host no tiene Gemini Live.</string>
+    <string name="geminilive_unavailable">No disponible.</string>
+    <string name="geminilive_unavailable_why">No disponible: %1$s.</string>
+
+    <!-- voice/HermesCalls.kt -->
+    <string name="hermescalls_done">Terminó: %1$s</string>
+    <string name="hermescalls_failed">Falló: %1$s</string>
+    <string name="hermescalls_stopped">Se detuvo: %1$s</string>
+    <string name="hermescalls_a_job">un trabajo</string>
+    <string name="hermescalls_approval">Necesita tu aprobación</string>
+    <string name="hermescalls_question">Tiene una pregunta</string>
+    <string name="hermescalls_wants_to_talk">Quiere hablar contigo</string>
+    <string name="hermescalls_channel">Llamadas de tu IA</string>
+
+    <!-- voice/LiveCall.kt -->
+    <string name="livecall_job_working">trabajando</string>
+    <string name="livecall_job_done">terminado</string>
+    <string name="livecall_job_error">error</string>
+    <string name="livecall_job_approval">espera aprobación</string>
+    <string name="livecall_job_reason">motivo de la llamada</string>
+    <string name="livecall_start_failed">No se pudo empezar la llamada: %1$s</string>
+    <string name="livecall_no_token">sin token</string>
+    <string name="livecall_reconnect_failed">No se pudo reconectar: %1$s</string>
+    <string name="livecall_saved_title">Llamada: %1$s</string>
+    <string name="livecall_save_failed">No se pudo guardar la llamada: %1$s</string>
+    <string name="livecall_cut_off">La llamada se cortó: %1$s</string>
+    <string name="livecall_gemini_closed">Gemini cerró la llamada (%1$s).</string>
+    <string name="livecall_calling_about">El trabajo por el que llamas</string>
+    <string name="livecall_idle_hang_up">Colgué por inactividad.</string>
+
+    <!-- voice/LiveCallScreen.kt -->
+    <string name="livecallscreen_live">En vivo</string>
+    <string name="livecallscreen_call">Llamada</string>
+    <string name="livecallscreen_saved">Guardada en tus chats</string>
+    <string name="livecallscreen_open">Abrir</string>
+    <string name="livecallscreen_jobs">Trabajos en Hermes</string>
+    <string name="livecallscreen_unmute">Activar micrófono</string>
+    <string name="livecallscreen_mute">Silenciar</string>
+    <string name="livecallscreen_hang_up">Colgar</string>
+    <string name="livecallscreen_close">Cerrar</string>
+    <string name="livecallscreen_connecting">conectando</string>
+    <string name="livecallscreen_muted">micrófono silenciado</string>
+    <string name="livecallscreen_listening">te escucho</string>
+    <string name="livecallscreen_speaking">hablando</string>
+    <string name="livecallscreen_reconnecting">reconectando</string>
+    <string name="livecallscreen_ended">terminada</string>
+    <string name="livecallscreen_mic_needed">Hace falta el micrófono para hablar con %1$s.</string>
+
+    <!-- voice/LiveCallService.kt -->
+    <string name="livecallservice_channel">Llamada en vivo</string>
+    <string name="livecallservice_talking_to">Hablando con %1$s</string>
+    <string name="livecallservice_from_watch">Gemini Live · desde el reloj</string>
+    <string name="livecallservice_hang_up">Colgar</string>
+
+    <!-- voice/ReadAloud.kt -->
+    <string name="readaloud_no_audio">sin audio</string>
+    <string name="readaloud_hermes_failed">La voz de Hermes falló (%1$s); leo con la voz del teléfono.</string>
+    <string name="readaloud_play_failed">No se pudo reproducir el audio.</string>
+    <string name="readaloud_phone_failed">La voz del teléfono falló.</string>
+    <string name="readaloud_no_voice">Este teléfono no tiene voz para leer.</string>
+
+    <!-- voice/Wake.kt -->
+    <string name="wake_default_phrase">Oye %1$s</string>
+    <string name="wake_no_mic_permission">Falta el permiso del micrófono.</string>
+    <string name="wake_no_recognizer">Este teléfono no tiene reconocimiento de voz continuo en el dispositivo (Android 13+).</string>
+    <string name="wake_two_words">La frase necesita al menos dos palabras.</string>
+    <string name="wake_failed">El reconocimiento de voz falló (%1$d).</string>
+
+    <!-- assist/AssistActivity.kt -->
+    <string name="assistactivity_ready">Listo: vuelve a mantener pulsado el botón de encendido.</string>
+    <string name="assistactivity_no_mic">Sin micrófono el asistente no puede escucharte.</string>
+
+    <!-- assist/AssistCard.kt -->
+    <string name="assistcard_close">Cerrar</string>
+
+    <!-- assist/AssistLive.kt -->
+    <string name="assistlive_live">En vivo</string>
+    <string name="assistlive_assistant">Asistente</string>
+    <string name="assistlive_type">Escribir</string>
+    <string name="assistlive_unmute">Activar micro</string>
+    <string name="assistlive_mute">Silenciar</string>
+    <string name="assistlive_how_can_i_help">¿En qué te ayudo?</string>
+
+    <!-- assist/AssistPanel.kt -->
+    <string name="assistpanel_listening">Te escucho…</string>
+    <string name="assistpanel_not_heard">No te oí. Toca el micro para intentarlo otra vez.</string>
+    <string name="assistpanel_thinking">Pensando…</string>
+    <string name="assistpanel_step">Paso %1$d…</string>
+    <string name="assistpanel_answering">Respondiendo…</string>
+    <string name="assistpanel_chat_title">Asistente</string>
+    <string name="assistpanel_assistant">Asistente</string>
+    <string name="assistpanel_heard">«%1$s»</string>
+    <string name="assistpanel_speak">Hablar</string>
+    <string name="assistpanel_open_chat">Abrir en el chat</string>
+
+    <!-- watch/WatchBridge.kt -->
+    <string name="watchbridge_chat_title">Desde el reloj</string>
+    <string name="watchbridge_doing_on_phone">Lo hago en el teléfono…</string>
+    <string name="watchbridge_event">Evento</string>
+
+    <!-- watch/WatchLive.kt -->
+    <string name="watchlive_call_on_phone">ya hay una llamada en el teléfono</string>
+    <string name="watchlive_unavailable">Gemini Live no está disponible</string>
+
+    <!-- settings/VoicePage.kt -->
+    <string name="voicepage_automatic">automático</string>
+    <string name="voicepage_dictation">Dictado</string>
+    <string name="voicepage_dictation_help">El micrófono del compositor escribe lo que dices.</string>
+    <string name="voicepage_engine_phone">Teléfono</string>
+    <string name="voicepage_engine_hermes_help">Graba y lo transcribe el STT de tu Hermes (%1$s). Toca el micro otra vez para terminar.</string>
+    <string name="voicepage_engine_on_device_help">Reconocimiento del teléfono, en el propio dispositivo, con el texto en vivo.</string>
+    <string name="voicepage_engine_phone_help">Reconocimiento del teléfono (puede usar la red de Google).</string>
+    <string name="voicepage_language">Idioma</string>
+    <string name="voicepage_language_phone">Idioma del teléfono</string>
+    <string name="voicepage_language_help">El dictado y el asistente escuchan en él; Gemini Live lo habla.</string>
+    <string name="voicepage_read_aloud">Leer en voz alta</string>
+    <string name="voicepage_read_aloud_help">El altavoz bajo cada respuesta la lee.</string>
+    <string name="voicepage_voice_hermes">Voz de Hermes</string>
+    <string name="voicepage_voice_phone">Voz del teléfono</string>
+    <string name="voicepage_voice_hermes_help">Usa el TTS de tu Hermes (%1$s). Si falla, lee con la voz del teléfono.</string>
+    <string name="voicepage_voice_phone_help">Google Text-to-Speech, sin pasar por Hermes.</string>
+    <string name="voicepage_speed">Velocidad %1$.1f×</string>
+    <string name="voicepage_stop">Parar</string>
+    <string name="voicepage_test_voice">Probar voz</string>
+    <string name="voicepage_voice_sample">Hola, soy %1$s. Así suenan mis respuestas.</string>
+    <string name="voicepage_transcription">Transcripción: %1$s</string>
+    <string name="voicepage_hermes_voice_help">Síntesis y voz valen para todo Hermes: la app y las respuestas de voz en Discord y WhatsApp. Otros proveedores se configuran en Capacidades > Herramientas.</string>
+    <string name="voicepage_calls_pair">Empareja este perfil en Ajustes > Notificaciones para que pueda llamarte.</string>
+    <string name="voicepage_calls_unsupported">Este plugin no admite llamadas: %1$s</string>
+    <string name="voicepage_calls_title">Llamadas de %1$s</string>
+    <string name="voicepage_calls_help">Te llama al teléfono como una llamada normal; al contestar habláis con Gemini Live sobre el motivo. Si no contestas, el chat lo sabe.</string>
+    <string name="voicepage_save_failed">No se pudo guardar: %1$s</string>
+    <string name="voicepage_saved">Guardado.</string>
+    <string name="voicepage_calls_allow">Permitir que me llame</string>
+    <string name="voicepage_calls_when_asked">Cuando se lo pida</string>
+    <string name="voicepage_calls_when_asked_help">«Llámame cuando termine», en un chat o en una llamada.</string>
+    <string name="voicepage_calls_alerts">Cuando espere mi respuesta</string>
+    <string name="voicepage_calls_alerts_help">Aprobaciones y preguntas sin contestar, y turnos que fallan.</string>
+    <string name="voicepage_calls_decides">Cuando lo decida</string>
+    <string name="voicepage_calls_decides_help">Si cree que algo merece una llamada.</string>
+    <string name="voicepage_voice_multilingual">multilingüe</string>
+    <string name="voicepage_voice_hermes_default">(por defecto de Hermes)</string>
+    <string name="voicepage_gemini_gravelly">grave</string>
+    <string name="voicepage_gemini_informative">informativa</string>
+    <string name="voicepage_gemini_firm">firme</string>
+    <string name="voicepage_gemini_clear">clara</string>
+    <string name="voicepage_gemini_knowledgeable">experta</string>
+    <string name="voicepage_gemini_even">uniforme</string>
+    <string name="voicepage_gemini_breathy">susurrante</string>
+    <string name="voicepage_gemini_excitable">enérgica</string>
+    <string name="voicepage_gemini_upbeat">animada</string>
+    <string name="voicepage_gemini_easygoing">relajada</string>
+    <string name="voicepage_gemini_firm_woman">firme (mujer)</string>
+    <string name="voicepage_gemini_breezy_woman">ligera (mujer)</string>
+    <string name="voicepage_gemini_youthful_woman">juvenil (mujer)</string>
+    <string name="voicepage_gemini_bright_woman">brillante (mujer)</string>
+    <string name="voicepage_synthesis">Síntesis</string>
+    <string name="voicepage_voice">Voz</string>
+    <string name="voicepage_gemini_tts_help">Gemini TTS usa tu clave de Gemini (nivel gratuito: límite diario). Si se acaba, la app lee con la voz del teléfono.</string>
+    <string name="voicepage_live_help">Conversación de voz en tiempo real con Gemini, que puede lanzar trabajos en Hermes. La clave de Gemini se queda en tu host.</string>
+    <string name="voicepage_live_use">Usar Gemini Live</string>
+    <string name="voicepage_live_use_help">El botón de voz abre una llamada con Gemini.</string>
+    <string name="voicepage_live_voice">Voz de la llamada</string>
+    <string name="voicepage_live_save">Guardar las llamadas</string>
+    <string name="voicepage_live_save_help">Cada llamada queda como un chat en Hermes, con su transcripción.</string>
+    <string name="voicepage_wake">Palabra de activación</string>
+    <string name="voicepage_wake_help">Con la app abierta en pantalla, di «%1$s» y empieza una llamada de Gemini Live, sin tocar nada. Lo escucha el reconocimiento de voz del teléfono: nada sale de él ni se guarda. Con la app cerrada no escucha.</string>
+    <string name="voicepage_wake_listen">Escuchar la frase</string>
+    <string name="voicepage_wake_phrase">Frase</string>
+    <string name="voicepage_wake_listening">Escuchando…</string>
+    <string name="voicepage_wake_paused">En pausa (una llamada o el dictado usan el micrófono).</string>
+    <string name="voicepage_assistant">Asistente del teléfono</string>
+    <string name="voicepage_assistant_help">Mantén pulsado el botón de encendido (o desliza desde una esquina de abajo) y %1$s te escucha encima de cualquier app, incluso con el teléfono bloqueado. Si permites «usar texto de la pantalla», ve lo que tienes abierto.</string>
+    <string name="voicepage_assistant_is_default">%1$s es tu asistente.</string>
+    <string name="voicepage_assistant_not_default">Aún no es tu asistente.</string>
+    <string name="voicepage_assistant_panel">Panel</string>
+    <string name="voicepage_assistant_live_help">Habla con Gemini Live desde abajo de la pantalla, sin salir de la app que tengas abierta. La X cuelga.</string>
+    <string name="voicepage_assistant_panel_help">Un panel que te escucha, responde por escrito y lo lee en voz alta.</string>
+    <string name="voicepage_assistant_choose">Elegir en Ajustes del teléfono</string>
+    <string name="voicepage_control">Controlar el teléfono</string>
+    <string name="voicepage_control_help">Desde el asistente, %1$s puede leer la pantalla, abrir apps, tocar, escribir y desplazarse por ti («abre WhatsApp y dile a M que llego tarde»). Te pregunta antes de enviar, pagar, comprar o borrar; nunca toca contraseñas ni actúa en apps de bancos o contraseñas.</string>
+    <string name="voicepage_control_on">Activado.</string>
+    <string name="voicepage_control_off">Desactivado.</string>
+    <string name="voicepage_control_steps">Ajustes › Accesibilidad › Apps instaladas › AllFather › Activar. Si sale «Ajuste restringido»: Ajustes › Apps › AllFather › ⋮ › «Permitir ajustes restringidos», y vuelve a intentarlo.</string>
+    <string name="voicepage_control_open">Abrir Accesibilidad</string>
+</resources>

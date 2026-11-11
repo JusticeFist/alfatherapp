@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Home-screen widget (launcher/LauncherWidget), in the app's look: graphite card, the profile as a letterspaced
+     eyebrow over a light title, an outlined pill and an off-white one. System font families: widgets don't take the
+     app's Geist. RemoteViews inflates only its allowed classes (LinearLayout, FrameLayout, TextView, ImageView…):
+     a plain <View> makes the launcher show "can't load". -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@drawable/widget_bg" android:orientation="vertical" android:padding="18dp">
+    <LinearLayout android:id="@+id/widget_head" android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1" android:orientation="horizontal" android:gravity="top">
+        <ImageView android:layout_width="40dp" android:layout_height="40dp" android:src="@mipmap/ic_launcher"
+            android:importantForAccessibility="no" />
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+            android:layout_marginStart="14dp" android:orientation="vertical">
+            <TextView android:id="@+id/widget_name" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium" android:textAllCaps="true" android:letterSpacing="0.3"
+                android:textColor="@color/af_ink_secondary" android:textSize="11sp" android:maxLines="1" />
+            <TextView android:id="@+id/widget_title" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_marginTop="4dp" android:fontFamily="sans-serif-light"
+                android:textColor="@color/af_ink" android:textSize="19sp" android:maxLines="2" android:ellipsize="end" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+        <TextView android:id="@+id/widget_new" android:layout_width="wrap_content" android:layout_height="40dp"
+            android:background="@drawable/widget_pill" android:gravity="center" android:paddingHorizontal="18dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/shortcut_new_chat" android:textColor="@color/af_ink" android:textSize="14sp" />
+        <FrameLayout android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
+        <TextView android:id="@+id/widget_talk" android:layout_width="wrap_content" android:layout_height="40dp"
+            android:background="@drawable/widget_pill_on" android:gravity="center" android:paddingHorizontal="18dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/shortcut_talk" android:textColor="@color/af_canvas" android:textSize="14sp" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Launcher shortcut icon (Hablar, AF.GraphicEq): the app's Lucide glyph (ui/icons/AF.kt) in off-white on graphite, the 24-unit
+     glyph centred in a 72 viewport: half of the visible 72 of the 108 adaptive canvas. -->
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background><color android:color="@color/af_surface" /></background>
+    <foreground>
+        <vector android:width="108dp" android:height="108dp" android:viewportWidth="72" android:viewportHeight="72">
+            <group android:translateX="24" android:translateY="24">
+                <path android:pathData="M2 10v3M6 6v11M10 3v18M14 8v7M18 5v13M22 10v3" android:strokeColor="@color/af_ink"
+                    android:strokeWidth="1.5" android:strokeLineCap="round" android:strokeLineJoin="round" />
+            </group>
+        </vector>
+    </foreground>
+</adaptive-icon>
