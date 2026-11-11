@@ -6,3 +6,5 @@
 *.ttf binary
 *.woff2 binary
 *.jar binary
+# Bundled KaTeX and Mermaid: third-party, keep them out of the language stats
+app/src/main/assets/web/** linguist-vendored
