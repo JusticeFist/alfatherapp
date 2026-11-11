@@ -37,7 +37,6 @@
     <string name="loginscreen_proxy_headers">Proxy headers</string>
     <string name="loginscreen_headers_hint">One per line, Name: value.</string>
     <string name="loginscreen_need_help">Need help connecting?</string>
-    <string name="loginscreen_try_demo">Try the demo (no server)</string>
     <string name="loginscreen_stays_here">Your sign-in stays on this device.</string>
     <string name="loginscreen_help_title">Connection help</string>
     <string name="loginscreen_help_easy">The easy way: ask your Hermes.</string>

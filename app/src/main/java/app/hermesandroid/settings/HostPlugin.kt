@@ -113,7 +113,6 @@ class HostPlugin(private val graph: AppGraph) {
         } catch (_: Exception) {
             return
         }
-        if (client.demo) return // demo: no "update available" from the real repo
         runCatching {
             // URL.readText() has no timeout: a server that never answers kept the IO thread (and this check) forever.
             withContext(Dispatchers.IO) {

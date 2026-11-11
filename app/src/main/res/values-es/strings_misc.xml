@@ -37,7 +37,6 @@
     <string name="loginscreen_proxy_headers">Headers de proxy</string>
     <string name="loginscreen_headers_hint">Uno por línea, Nombre: valor.</string>
     <string name="loginscreen_need_help">¿Necesitas ayuda para conectar?</string>
-    <string name="loginscreen_try_demo">Probar la demo (sin servidor)</string>
     <string name="loginscreen_stays_here">Tu inicio de sesión se queda en este dispositivo.</string>
     <string name="loginscreen_help_title">Ayuda para conectar</string>
     <string name="loginscreen_help_easy">La forma fácil: pídeselo a tu Hermes.</string>

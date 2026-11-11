@@ -158,14 +158,6 @@ class HermesClient(private val store: Store, private val scope: CoroutineScope) 
     private var pingJob: Job? = null
 
     private val base get() = store.baseUrl.trimEnd('/')
-    /**
-     * Demo mode: the dashboard is [Demo], inside the app; nothing touches the network. A field, not `base == …`:
-     * every read of `store.baseUrl` is a Keystore decrypt, and this is checked on every call. Set wherever the
-     * active dashboard can change (sign-in, switch, connect).
-     */
-    @Volatile var demo = false
-        private set
-    private fun syncDemo() { demo = base == Demo.URL }
 
     /** Active Hermes profile. `default` sends no profile; others scope every RPC and REST call (scopeParams / DashboardPath). */
     var profile: String
@@ -185,7 +177,6 @@ class HermesClient(private val store: Store, private val scope: CoroutineScope) 
         store.baseUrl = url.trim().trimEnd('/')
         store.username = username.trim()
         store.password = password
-        syncDemo()
         passwordLogin()
     }
 
@@ -201,7 +192,6 @@ class HermesClient(private val store: Store, private val scope: CoroutineScope) 
     fun switchDashboard() {
         stop()
         cookieJar.reload()
-        syncDemo()
     }
 
     /** `GET /api/auth/providers` (public): which sign-in methods this dashboard offers. */
@@ -223,7 +213,6 @@ class HermesClient(private val store: Store, private val scope: CoroutineScope) 
         cookieJar.clear()
         store.baseUrl = url.trim().trimEnd('/')
         store.password = ""
-        syncDemo()
         val r = tokenRequest("/auth/native/token", buildJsonObject { put("code", code); put("code_verifier", verifier) })
         store.oauthTokens = r.toString()
         store.username = r.str("user_id") ?: r.str("provider") ?: "OAuth"
@@ -263,7 +252,6 @@ class HermesClient(private val store: Store, private val scope: CoroutineScope) 
 
     /** One REST call. A 401 means the session died: sign in again with the saved password and retry once. */
     suspend fun rest(method: String, path: String, body: JsonObject? = null, reauth: Boolean = true, timeoutSec: Long = 30): JsonElement {
-        if (demo) return Demo.rest(method, path, body)
         // Parsed here too: callers run on the main thread, and a history or a data-URL reply is megabytes of JSON.
         val (code, parsed) = withContext(Dispatchers.IO) {
             val reqBody = body?.toString()?.toRequestBody(jsonType) ?: if (method == "POST") ByteArray(0).toRequestBody(null) else null
@@ -284,7 +272,6 @@ class HermesClient(private val store: Store, private val scope: CoroutineScope) 
     // ---- WebSocket ----
 
     fun start() {
-        syncDemo()
         wantConnected = true
         if (ws == null && connectJob?.isActive != true) connectJob = scope.launch { connectLoop() }
     }
@@ -320,14 +307,6 @@ class HermesClient(private val store: Store, private val scope: CoroutineScope) 
     }
 
     private suspend fun openSocket() {
-        if (!demo) realSocket()
-        connected.value = true
-        // Not inside the connect job: its dozen REST/RPC calls take seconds, and a drop meanwhile (a network switch)
-        // found the job still active, so lost() started no new loop; the job then ended and nothing reconnected.
-        scope.launch { runCatching { onConnected?.invoke() }.onFailure { android.util.Log.w("HermesClient", "onConnected: $it") } }
-    }
-
-    private suspend fun realSocket() {
         val ticket = rest("POST", "/api/auth/ws-ticket").obj()?.str("ticket") ?: throw IOException(tr(R.string.hermesclient_no_ticket))
         val gate = CompletableDeferred<Unit>()
         ready = gate
@@ -340,12 +319,15 @@ class HermesClient(private val store: Store, private val scope: CoroutineScope) 
         withTimeoutOrNull(15_000) { gate.await() } ?: throw IOException(tr(R.string.hermesclient_no_answer_connecting))
         val caps = call("client.capabilities", buildJsonObject { put("server_requests", true) }, scoped = false).obj()
         declinesNotShown = caps?.bool("declines_not_shown") ?: false
+        connected.value = true
         startPing(socket)
+        // Not inside the connect job: its dozen REST/RPC calls take seconds, and a drop meanwhile (a network switch)
+        // found the job still active, so lost() started no new loop; the job then ended and nothing reconnected.
+        scope.launch { runCatching { onConnected?.invoke() }.onFailure { android.util.Log.w("HermesClient", "onConnected: $it") } }
     }
 
     /** A plugin's own WebSocket (Kanban `/events`), let in by a fresh single-use ticket like `/api/ws`. */
     suspend fun pluginSocket(path: String, listener: WebSocketListener): WebSocket {
-        if (demo) throw IOException(tr(R.string.hermesclient_no_connection))
         val ticket = rest("POST", "/api/auth/ws-ticket").obj()?.str("ticket") ?: throw IOException(tr(R.string.hermesclient_no_ticket))
         val url = base + path + (if ('?' in path) "&" else "?") + "ticket=" + URLEncoder.encode(ticket, "UTF-8")
         return wsHttp.newWebSocket(Request.Builder().url(url).build(), listener)
@@ -426,7 +408,6 @@ class HermesClient(private val store: Store, private val scope: CoroutineScope) 
 
     /** JSON-RPC call. `scoped` adds the active profile unless the caller already set one. */
     suspend fun call(method: String, params: JsonObject? = null, timeoutMs: Long = 30_000, scoped: Boolean = true): JsonElement {
-        if (demo) return Demo.call(method, params ?: EMPTY_OBJECT, scope) { inbox.trySend(it) }
         val socket = ws ?: throw IOException(tr(R.string.hermesclient_no_connection))
         val id = nextId.getAndIncrement()
         val waiter = CompletableDeferred<JsonElement>()
@@ -453,7 +434,6 @@ class HermesClient(private val store: Store, private val scope: CoroutineScope) 
 
     /** Answer a server-to-client request (`srq-…` id). */
     fun reply(id: String, result: JsonObject) {
-        if (demo) return Demo.reply(id, result)
         ws?.send(buildJsonObject { put("jsonrpc", "2.0"); put("id", id); put("result", result) }.toString())
     }
 

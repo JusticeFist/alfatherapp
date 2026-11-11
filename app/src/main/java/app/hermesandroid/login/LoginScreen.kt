@@ -3,7 +3,6 @@ package app.hermesandroid.login
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import app.hermesandroid.net.Demo
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -143,9 +142,6 @@ class LoginState(private val graph: AppGraph) {
         }
     }
 
-    /** Signs in to the built-in demo dashboard ([Demo]): sample data, no network. */
-    fun demo() = run { graph.signIn(Demo.URL, "demo", "demo") }
-
     /** Lists the dashboard's providers; anything without password support is an OAuth button. */
     fun discover() = run {
         saveProxy()
@@ -260,7 +256,6 @@ fun LoginScreen(graph: AppGraph) {
                         }
                     }
                     TextLink(stringResource(R.string.loginscreen_need_help)) { help = true }
-                    TextLink(stringResource(R.string.loginscreen_try_demo), enabled = !s.busy, onClick = s::demo)
                 }
                 Text(stringResource(R.string.loginscreen_stays_here), style = CType.caption, color = c.tertiary, modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
             }

@@ -33,9 +33,6 @@ voice, notifications, tasks, bots, and an assistant on the power button.
   then restart the dashboard. The app can update it later from Settings.
 - Android 10 (API 29) or newer. Wear OS watch optional.
 
-No Hermes yet? Tap **Try the demo (no server)** on the sign-in screen: every screen runs on sample data
-(`app/src/main/assets/demo.json`), with scripted streamed replies; write *approve* in a message to see an approval card.
-
 ## Build
 JDK 17 or newer and the Android SDK (`ANDROID_HOME`, or `sdk.dir` in `local.properties`).
 ```bash
