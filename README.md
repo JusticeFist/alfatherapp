@@ -1,27 +1,53 @@
-# AllFather
+<p align="center">
+  <img src="docs/readme/banner.png" alt="AllFather: your Hermes agent on Android" width="100%">
+</p>
 
-A native Android client (Kotlin + Jetpack Compose) for [Hermes Agent](https://github.com/NousResearch/hermes-agent),
-with a Wear OS companion. It signs in to your own Hermes dashboard and puts your agent on your phone: chat,
-voice, notifications, tasks, bots, and an assistant on the power button.
+<p align="center">
+  <a href="https://github.com/JusticeFist/alfatherapp/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/JusticeFist/alfatherapp?style=flat-square&color=111111&labelColor=2a2a2a"></a>
+  <img alt="Android 10+" src="https://img.shields.io/badge/Android-10%2B-111111?style=flat-square&labelColor=2a2a2a&logo=android&logoColor=white">
+  <img alt="Wear OS" src="https://img.shields.io/badge/Wear%20OS-companion-111111?style=flat-square&labelColor=2a2a2a&logo=wearos&logoColor=white">
+  <img alt="Kotlin and Jetpack Compose" src="https://img.shields.io/badge/Kotlin-Jetpack%20Compose-111111?style=flat-square&labelColor=2a2a2a&logo=kotlin&logoColor=white">
+  <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-111111?style=flat-square&labelColor=2a2a2a"></a>
+</p>
 
-[Español abajo](#español)
+<p align="center">
+  A native Android client for <a href="https://github.com/NousResearch/hermes-agent">Hermes Agent</a>, with a Wear OS companion.<br>
+  It signs in to <b>your own</b> Hermes dashboard and puts your agent on your phone.
+</p>
+
+<p align="center">
+  <a href="https://github.com/JusticeFist/alfatherapp/releases/latest"><b>Download the APK</b></a> ·
+  <a href="#what-you-need">What you need</a> ·
+  <a href="#build">Build</a> ·
+  <a href="#español">Español</a>
+</p>
+
+<p align="center">
+  <img src="docs/readme/screens.png" alt="Chat, approvals, chats list, tasks, Pulse and artifacts screens" width="100%">
+</p>
 
 ## Features
-- **Chat** with streaming replies, Markdown, code, LaTeX, Mermaid, images and files; model and reasoning picker;
-  queue, steer or interrupt a running turn; reactions, read aloud, quote, fork.
-- **Chats list** with pins, archive, sources, search; **Projects** and **Artifacts**.
-- **Tasks**: the Kanban board and scheduled (cron) jobs with each run's result.
-- **Bots**: profiles and group rooms; **helper profiles** your agent can consult ("Ask your helpers").
-- **Settings**: connection(s), profile config, skills, tools, connectors, plugins, host files.
-- **Notifications** (FCM, end-to-end encrypted): replies, approvals from the notification, calls, live progress.
-- **Voice**: dictation, read aloud, Gemini Live calls, wake phrase.
-- **System assistant** (hold the power button) and **phone control** through an accessibility service (asks
-  before sending, paying or deleting; never touches passwords, banking or password-manager apps).
-- **Sharing with your agent** (opt-in, end-to-end encrypted): calendar, phone state, location, Health Connect.
-- **Pulse**: your agent's proactive cards.
-- **Wear OS** app: ask by voice, hear the answer; tile and complication.
-- Share target, launcher shortcuts, home-screen widget and a Quick Settings tile.
-- English and Spanish UI.
+
+| | |
+|---|---|
+| **Chat** | Streaming replies with Markdown, code, LaTeX, Mermaid, images and files. Model and reasoning picker; queue, steer or interrupt a running turn; reactions, read aloud, quote, fork. |
+| **Approvals** | Approve or deny your agent's commands right in the chat, or from the notification. |
+| **Chats, Projects, Artifacts** | Pins, archive, sources and search; every file, page and link your agent made, in one place. |
+| **Tasks** | The Kanban board and scheduled (cron) jobs, with each run's result. |
+| **Bots** | Profiles and group rooms; helper profiles your agent can consult ("Ask your helpers"). |
+| **Pulse** | Your agent's proactive cards: what it noticed on its own, rated by you. |
+| **Voice** | Dictation, read aloud, Gemini Live calls and a wake phrase. |
+| **Assistant** | Hold the power button. Phone control through an accessibility service asks before sending, paying or deleting, and never touches passwords, banking or password-manager apps. |
+| **Notifications** | FCM, end-to-end encrypted: replies, approvals, calls and live progress. |
+| **Sharing** | Opt-in and end-to-end encrypted: calendar, phone state, location, Health Connect. |
+| **Wear OS** | Ask by voice and hear the answer; tile and complication. |
+| **Everywhere** | Share target, launcher shortcuts, home-screen widget, Quick Settings tile. English and Spanish UI. |
+
+## Install
+Download `AllFather.apk` (and `AllFatherWatch.apk` for the watch) from the
+[latest release](https://github.com/JusticeFist/alfatherapp/releases/latest) and open it on your phone. Android asks
+once to allow installs from your browser or file manager. The phone and watch APKs share one signing key, so take
+both from the same release.
 
 ## What you need
 - A Hermes host running the web dashboard (`hermes dashboard`, port 9119 by default) that your phone can reach
@@ -81,6 +107,9 @@ Copy the folders in [`host/skills/`](host/skills) into `~/.hermes/skills/` on yo
 AllFather es un cliente nativo de Android (y Wear OS) para [Hermes Agent](https://github.com/NousResearch/hermes-agent):
 se conecta a tu propio dashboard de Hermes y trae a tu agente al teléfono, con chat, voz, notificaciones, tareas,
 bots y un asistente en el botón de encendido. La interfaz está en inglés y español (sigue el idioma del teléfono).
+
+**Instalar:** descarga `AllFather.apk` (y `AllFatherWatch.apk` para el reloj) de la
+[última versión](https://github.com/JusticeFist/alfatherapp/releases/latest) y ábrelo en el teléfono.
 
 **Necesitas** un host de Hermes con el dashboard (`hermes dashboard`, puerto 9119) accesible desde el teléfono, y
 el plugin del host:
