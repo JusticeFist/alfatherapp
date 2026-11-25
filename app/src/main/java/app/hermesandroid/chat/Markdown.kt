@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -146,14 +147,19 @@ fun segments(text: String): List<Seg> {
 @Composable
 fun ReplyBody(text: String, scale: Float = 1f) {
     val parts = remember(text) { segments(text) }
-    Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-        parts.forEach { seg ->
-            when (seg) {
-                is Seg.Md -> AfMarkdown(seg.text, scale)
-                is Seg.Math -> HtmlBlock(katexHtml(seg.tex), minHeight = 48)
-                is Seg.Mermaid -> HtmlBlock(mermaidHtml(seg.code), minHeight = 160)
-                is Seg.Media -> MediaBlock(seg.path)
-                is Seg.Preview -> PreviewBlock(seg.file)
+    // One selection container per reply, so a long press picks a word and drags across paragraphs, list items
+    // and code fences: the renderer draws each block with BasicText, which only takes part in a selection when
+    // a SelectionContainer hands it a registrar. The copy icons nearby only take the whole reply.
+    SelectionContainer {
+        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            parts.forEach { seg ->
+                when (seg) {
+                    is Seg.Md -> AfMarkdown(seg.text, scale)
+                    is Seg.Math -> HtmlBlock(katexHtml(seg.tex), minHeight = 48)
+                    is Seg.Mermaid -> HtmlBlock(mermaidHtml(seg.code), minHeight = 160)
+                    is Seg.Media -> MediaBlock(seg.path)
+                    is Seg.Preview -> PreviewBlock(seg.file)
+                }
             }
         }
     }
