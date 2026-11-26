@@ -195,6 +195,13 @@ fun Avatar(name: String, size: Dp = 30.dp, alpha: Float = 1f, color: Color = C.c
     val c = C.colors
     val rim = Modifier.size(size).clip(CircleShape).border(Dp.Hairline, c.composerStroke, CircleShape)
     if (name == "default") {
+        // Settings > Appearance can replace the app's own portrait; the host photo for the default
+        // profile stays out of it, so this is the one place the local override wins.
+        val custom = app.hermesandroid.ui.theme.Appearance.portraitImage(with(androidx.compose.ui.platform.LocalDensity.current) { size.roundToPx() })
+        if (custom != null) {
+            androidx.compose.foundation.Image(custom, name, contentScale = androidx.compose.ui.layout.ContentScale.Crop, modifier = rim, alpha = alpha)
+            return
+        }
         androidx.compose.foundation.Image(
             androidx.compose.ui.res.painterResource(app.hermesandroid.R.drawable.af_avatar), name,
             contentScale = androidx.compose.ui.layout.ContentScale.Crop, modifier = rim, alpha = alpha,

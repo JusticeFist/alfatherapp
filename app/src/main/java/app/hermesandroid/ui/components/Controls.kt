@@ -92,16 +92,56 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import app.hermesandroid.ui.theme.pressable
 import app.hermesandroid.ui.theme.settingsCard
+import app.hermesandroid.ui.theme.Appearance
+import app.hermesandroid.ui.theme.HeroMode
+import app.hermesandroid.ui.theme.fadeToCanvas
 
-/** AllFather's portrait in a circle with a hairline rim: the app's identity on login, lock and the assistant. */
+/**
+ * A face in a circle with a hairline rim: the app's identity on login, lock, the assistant and the
+ * call. It follows Settings > Appearance — a flat Backdrop in the theme's canvas, the user's own
+ * portrait, or the app's art — so the mascot can be turned off everywhere at once.
+ */
 @Composable
-fun AppIconArt(size: Dp) {
-    Image(
-        painterResource(R.drawable.af_avatar),
-        contentDescription = null,
-        contentScale = ContentScale.Crop,
-        modifier = Modifier.size(size).clip(CircleShape).border(Dp.Hairline, C.colors.composerStroke, CircleShape),
-    )
+fun FaceArt(art: Int, size: Dp) {
+    val c = C.colors
+    val rim = Modifier.size(size).clip(CircleShape).border(Dp.Hairline, c.composerStroke, CircleShape)
+    if (Appearance.heroMode == HeroMode.Flat) {
+        Box(rim.background(c.canvas))
+        return
+    }
+    // The lock screen, the assistant and the call bubble are the app's face, so they follow the
+    // user's portrait too (Settings > Appearance) — a bitmap the same size, the same rim.
+    val custom = Appearance.portraitImage(with(androidx.compose.ui.platform.LocalDensity.current) { size.roundToPx() })
+    if (custom != null) {
+        Image(custom, contentDescription = null, contentScale = ContentScale.Crop, modifier = rim)
+        return
+    }
+    Image(painterResource(art), contentDescription = null, contentScale = ContentScale.Crop, modifier = rim)
+}
+
+/** AllFather's portrait in a circle: the app's identity wherever it is the app itself. */
+@Composable
+fun AppIconArt(size: Dp) = FaceArt(R.drawable.af_avatar, size)
+
+/**
+ * A hero panel: the strip on login, the greeting's hero in a fresh chat. Three Backdrop modes
+ * (Settings > Appearance), and the box and the fade into the canvas are identical in every one, so
+ * the text under the hero never moves when the mascot goes away. A backdrop picture whose file is
+ * gone (a restored app without its old internal storage) is not an error: it means the app's own art,
+ * exactly as a missing portrait does.
+ *
+ * Callers pass the modifiers that size and shape the panel; the fade is HeroArt's, since every mode
+ * needs the same one.
+ */
+@Composable
+fun HeroArt(art: Int, modifier: Modifier = Modifier, px: Int = 1080, fade: Float = 0.5f, alignment: Alignment = Alignment.Center) {
+    val c = C.colors
+    val image = if (Appearance.heroMode == HeroMode.Picture) Appearance.heroImagePx(px) else null
+    when {
+        Appearance.heroMode == HeroMode.Flat -> Box(modifier.background(c.canvas).fadeToCanvas(fade))
+        image != null -> Image(image, contentDescription = null, contentScale = ContentScale.Crop, alignment = alignment, modifier = modifier.fadeToCanvas(fade))
+        else -> Image(painterResource(art), contentDescription = null, contentScale = ContentScale.Crop, alignment = alignment, modifier = modifier.fadeToCanvas(fade))
+    }
 }
 
 /** Letterspaced uppercase label above a title, a group or a field. */

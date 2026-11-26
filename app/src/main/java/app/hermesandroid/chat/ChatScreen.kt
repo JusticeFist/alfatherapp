@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.ui.graphics.graphicsLayer
 import kotlinx.coroutines.flow.drop
 import app.hermesandroid.ui.components.Pill
+import app.hermesandroid.ui.components.HeroArt
 import app.hermesandroid.ui.theme.Appear
 import app.hermesandroid.ui.theme.Swap
 import app.hermesandroid.ui.theme.reducedMotion
@@ -126,7 +127,6 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.Dp
-import app.hermesandroid.ui.theme.fadeToCanvas
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import app.hermesandroid.R
@@ -300,10 +300,9 @@ private fun EmptyChat(name: String, onStarter: (String) -> Unit) {
         when (java.util.Calendar.getInstance().get(java.util.Calendar.HOUR_OF_DAY)) { in 5..11 -> R.string.chatscreen_good_morning; in 12..18 -> R.string.chatscreen_good_afternoon; else -> R.string.chatscreen_good_evening }
     })
     Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-        androidx.compose.foundation.Image(
-            androidx.compose.ui.res.painterResource(app.hermesandroid.R.drawable.af_empty), null,
-            contentScale = androidx.compose.ui.layout.ContentScale.Crop,
-            modifier = Modifier.fillMaxWidth().aspectRatio(1.2f).clip(Radii.lg).fadeToCanvas(),
+        HeroArt(
+            app.hermesandroid.R.drawable.af_empty,
+            modifier = Modifier.fillMaxWidth().aspectRatio(1.2f).clip(Radii.lg),
         )
         Spacer(Modifier.height(10.dp))
         Eyebrow(greeting)

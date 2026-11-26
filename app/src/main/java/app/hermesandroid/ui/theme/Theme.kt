@@ -5,6 +5,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.core.FiniteAnimationSpec
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Shapes
@@ -16,8 +17,9 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
@@ -97,7 +99,22 @@ val AllFatherColors = AfColors(
     hairline = Color.White.copy(alpha = 0.08f),
 )
 
-val LocalAfColors = staticCompositionLocalOf { AllFatherColors }
+/**
+ * A dynamic local on purpose. A static one is never invalidated when the provided value changes, so a
+ * theme picked in Settings would keep painting the old ramp until the activity was recreated; every
+ * reader of [C.colors] has to subscribe for the retint to land while the app is open.
+ */
+val LocalAfColors = compositionLocalOf { AllFatherColors }
+
+/**
+ * The token set of a [Tint]: the four surface tokens from the theme, every other token from
+ * [AllFatherColors]. Graphite returns the shipped instance untouched, so the default path allocates
+ * nothing and cannot drift from the app as it ships.
+ */
+@Composable
+fun afColors(tint: Tint): AfColors =
+    if (tint == Tint.Graphite) AllFatherColors
+    else remember(tint) { AllFatherColors.copy(canvas = tint.canvas, surface = tint.surface, raised = tint.raised, composer = tint.composer) }
 
 // Geist and Geist Mono are variable fonts (res/font, OFL in assets/licenses): one file, a weight axis per entry.
 private fun variable(res: Int, weight: Int) = Font(res, FontWeight(weight), variationSettings = FontVariation.Settings(FontVariation.weight(weight)))
@@ -173,7 +190,13 @@ object C {
 }
 
 // Every Material role is set: anything left at its default shows Material's purple (menus, switches, dialogs).
-private val scheme = AllFatherColors.let { c ->
+// A function of the colours, not a top-level val: a val is evaluated once at class init, and a theme picked at
+// runtime has to be able to retint it. The container steps that stay graphite (`surfaceBright`,
+// `surfaceContainerLowest/Low/High/Highest`) are Material's tonal-elevation ladder, not design-system surfaces:
+// a menu is one step of grey above its own container, and moving those with the theme would widen the ramp's
+// saturation for a step the app draws twice (`surfaceContainer` itself is the theme's surface, so it follows).
+@Composable
+private fun afScheme(colors: AfColors): ColorScheme = remember(colors) { colors.let { c ->
     darkColorScheme(
         primary = c.accent, onPrimary = c.onAccent, primaryContainer = c.raised, onPrimaryContainer = c.text,
         inversePrimary = c.canvas,
@@ -188,7 +211,7 @@ private val scheme = AllFatherColors.let { c ->
         surfaceContainerLowest = Color(0xFF0B0B0C), surfaceContainerLow = Color(0xFF151516), surfaceContainer = c.surface,
         surfaceContainerHigh = Color(0xFF202022), surfaceContainerHighest = Color(0xFF26262A),
     )
-}
+} }
 private val base = Typography()
 private val type = Typography(
     displayLarge = base.displayLarge.copy(fontFamily = Geist, fontWeight = FontWeight.Light),
@@ -213,7 +236,16 @@ fun AfTheme(content: @Composable () -> Unit) {
             androidx.core.view.WindowCompat.getInsetsController(w, view).apply { isAppearanceLightStatusBars = false; isAppearanceLightNavigationBars = false }
         }
     }
-    MaterialTheme(colorScheme = scheme, typography = type, shapes = shapes) {
-        CompositionLocalProvider(LocalAfColors provides AllFatherColors, LocalContentColor provides AllFatherColors.text, LocalReducedMotion provides rememberReducedMotion(), content = content)
+    // The theme is a snapshot the setting writes (Settings > Appearance > Backdrop). Reading it here is what
+    // retints the app without a restart, and the same AfColors feeds both token sets, so Material's roles and
+    // the app's own can never disagree mid-change.
+    val colors = afColors(Appearance.tint)
+    // No key() on the colours. A key change disposes the subtree under it, so keying here threw away the
+    // screen the user was standing on every time they tapped a theme: the settings page, its scroll
+    // position, the backstack. The dynamic [LocalAfColors] is what carries a retint, and it is enough —
+    // the app reads Material's colour scheme in exactly one place (`scrim`, in the assistant card), a
+    // token no theme moves.
+    MaterialTheme(colorScheme = afScheme(colors), typography = type, shapes = shapes) {
+        CompositionLocalProvider(LocalAfColors provides colors, LocalContentColor provides colors.text, LocalReducedMotion provides rememberReducedMotion(), content = content)
     }
 }

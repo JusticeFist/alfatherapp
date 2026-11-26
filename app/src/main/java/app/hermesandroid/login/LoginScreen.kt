@@ -18,7 +18,6 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.animation.animateContentSize
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -50,10 +49,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.input.KeyboardType
@@ -86,10 +83,10 @@ import com.google.mlkit.vision.codescanner.GmsBarcodeScannerOptions
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanning
 import kotlinx.coroutines.launch
 import app.hermesandroid.ui.theme.well
-import app.hermesandroid.ui.theme.fadeToCanvas
 import app.hermesandroid.ui.shell.PageBar
 import app.hermesandroid.ui.shell.CapsuleIcon
 import app.hermesandroid.ui.components.Wordmark
+import app.hermesandroid.ui.components.HeroArt
 
 data class OAuthProvider(val name: String, val title: String)
 
@@ -217,10 +214,9 @@ fun LoginScreen(graph: AppGraph) {
         ) {
             // AllFather walking in, fading into the canvas; the wordmark sits on the fade.
             Box(Modifier.widthIn(max = 520.dp).fillMaxWidth().aspectRatio(1.1f)) {
-                Image(
-                    painterResource(R.drawable.af_login), null,
-                    contentScale = ContentScale.Crop, alignment = Alignment.TopCenter,
-                    modifier = Modifier.fillMaxSize().rise { enter.value / 0.45f }.fadeToCanvas(0.4f),
+                HeroArt(
+                    R.drawable.af_login, px = 1100, fade = 0.4f, alignment = Alignment.TopCenter,
+                    modifier = Modifier.fillMaxSize().rise { enter.value / 0.45f },
                 )
                 if (graph.addingFrom != null) Box(Modifier.statusBarsPadding()) { PageBar(graph::cancelAddDashboard) }
                 Column(Modifier.align(Alignment.BottomCenter).rise { (enter.value - 0.25f) / 0.45f }, horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp)) {

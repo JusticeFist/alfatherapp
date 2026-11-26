@@ -34,6 +34,10 @@ inset of its neighbours.
 
 Outside Compose (widget, shortcut icons, notifications) the same palette lives in `res/values/colors.xml`
 (`af_canvas`, `af_surface`, `af_ink`, `af_ink_secondary`, `af_outline`, `af_hairline`); keep the two in step.
+The one exception is by design: a **theme** (`ui/theme/Themes.kt`, Settings > Appearance > Backdrop) retints
+`canvas`, `surface`, `raised` and the composer — and nothing else, never the text, the accent or the status
+colours — on seven ramps that hold graphite's lightness at HLS saturation 0.45. `colors.xml` is static XML read
+outside Compose, so the widget, the notifications and the shortcut icons stay graphite on every theme.
 
 ## Type
 - **Geist** (variable, 300–700) for everything; **Geist Mono** with tabular figures for data (`CType.data`,

@@ -108,6 +108,22 @@ class Store(context: Context, private val encrypted: Boolean = true) {
     var haptics: Boolean
         get() = settings.getBoolean("haptics", true)
         set(v) = settings.edit().putBoolean("haptics", v).apply()
+    /** Settings > Appearance: the user's own portrait (absolute path), empty for the app's bundled art. */
+    var portrait: String
+        get() = settings.getString("portrait", "") ?: ""
+        set(v) = settings.edit().putString("portrait", v).apply()
+    /** Settings > Appearance > Backdrop: what the heroes draw — "art" | "flat" | "picture". */
+    var heroMode: String
+        get() = settings.getString("heroMode", "art") ?: "art"
+        set(v) = settings.edit().putString("heroMode", v).apply()
+    /** Settings > Appearance > Backdrop: the app's theme, by its lowercase name (see ui.theme.Tint). */
+    var tint: String
+        get() = settings.getString("tint", "graphite") ?: "graphite"
+        set(v) = settings.edit().putString("tint", v).apply()
+    /** Settings > Appearance > Backdrop: the user's own picture (absolute path), empty for the app's art. */
+    var heroImage: String
+        get() = settings.getString("heroImage", "") ?: ""
+        set(v) = settings.edit().putString("heroImage", v).apply()
     /** Voice (Settings > Voice): dictation engine "phone" | "hermes", read-aloud voice "hermes" | "phone", read-aloud speed. */
     var dictation: String
         get() = settings.getString("dictation", "phone") ?: "phone"

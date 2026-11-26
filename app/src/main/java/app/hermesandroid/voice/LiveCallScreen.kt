@@ -6,9 +6,7 @@ import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -43,8 +41,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
@@ -52,6 +48,7 @@ import androidx.compose.ui.unit.dp
 import app.hermesandroid.AppGraph
 import app.hermesandroid.R
 import app.hermesandroid.ui.components.Eyebrow
+import app.hermesandroid.ui.components.FaceArt
 import app.hermesandroid.ui.components.Wordmark
 import app.hermesandroid.ui.icons.AF
 import app.hermesandroid.ui.theme.Backdrop
@@ -175,10 +172,7 @@ internal fun HudPortrait(level: () -> Float, live: Boolean, modifier: Modifier =
         },
         contentAlignment = Alignment.Center,
     ) {
-        Image(
-            painterResource(R.drawable.af_voice), null, contentScale = ContentScale.Crop,
-            modifier = Modifier.size(size * 0.62f).clip(CircleShape).border(androidx.compose.ui.unit.Dp.Hairline, c.composerStroke, CircleShape),
-        )
+        FaceArt(R.drawable.af_voice, size * 0.62f)
     }
 }
 

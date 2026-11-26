@@ -51,7 +51,7 @@ enum class SettingsPageId(@StringRes val title: Int) {
     Memory(R.string.settingsscreen_page_memory), Advanced(R.string.settingsscreen_page_advanced), Capabilities(R.string.settingsscreen_page_capabilities),
     HostPlugin(R.string.settingsscreen_page_host_plugin), Files(R.string.settingsscreen_page_files), Notifications(R.string.settingsscreen_page_notifications),
     Voice(R.string.settingsscreen_page_voice), Phone(R.string.settingsscreen_page_phone), Location(R.string.settingsscreen_page_location),
-    Health(R.string.settingsscreen_page_health), Alerts(R.string.settingsscreen_page_alerts),
+    Health(R.string.settingsscreen_page_health), Alerts(R.string.settingsscreen_page_alerts), Appearance(R.string.settingsscreen_page_appearance),
 }
 
 @Composable
@@ -96,6 +96,7 @@ private fun SettingsSubPage(graph: AppGraph, p: SettingsPageId, bottomInset: Dp,
             SettingsPageId.Location -> LocationPage(graph)
             SettingsPageId.Health -> HealthPage(graph)
             SettingsPageId.Alerts -> AlertsPage(graph)
+            SettingsPageId.Appearance -> AppearancePage(graph)
         }
     }
 }
@@ -167,6 +168,7 @@ private fun SettingsHome(graph: AppGraph, bottomInset: Dp, onBack: () -> Unit, o
                     detail = if (graph.push.registered) stringResource(R.string.settingsscreen_notifications_on, graph.push.relayUrl.substringAfter("://")) else stringResource(R.string.settingsscreen_notifications_off),
                 ) { open(SettingsPageId.Notifications) }
                 SettingsRow(AF.Fingerprint, stringResource(R.string.settingsscreen_biometric), detail = stringResource(R.string.settingsscreen_biometric_help), checked = biometric, onCheckedChange = { biometric = it; graph.setBiometric(it) })
+                SettingsRow(AF.Image, stringResource(R.string.settingsscreen_page_appearance), detail = stringResource(R.string.settingsscreen_appearance_detail)) { open(SettingsPageId.Appearance) }
             }
             SettingsGroup(stringResource(R.string.settingsscreen_server), AF.Dns) {
                 SettingsRow(AF.Dns, stringResource(R.string.settingsscreen_dashboards), detail = stringResource(R.string.settingsscreen_dashboards_detail, graph.dashboards.size), first = true) { sheet = SettingsSheet.Dashboards }
