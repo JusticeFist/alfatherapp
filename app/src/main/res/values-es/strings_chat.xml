@@ -81,6 +81,21 @@
         <item quantity="one">%1$s tiene una pregunta</item>
         <item quantity="other">%1$s tiene %2$d preguntas</item>
     </plurals>
+    <plurals name="chatscreen_ask_questions">
+        <item quantity="one">%1$d pregunta</item>
+        <item quantity="other">%1$d preguntas</item>
+    </plurals>
+    <plurals name="chatscreen_ask_approvals">
+        <item quantity="one">%1$d aprobación</item>
+        <item quantity="other">%1$d aprobaciones</item>
+    </plurals>
+    <plurals name="chatscreen_ask_changes">
+        <item quantity="one">%1$d cambio en tu teléfono</item>
+        <item quantity="other">%1$d cambios en tu teléfono</item>
+    </plurals>
+    <string name="chatscreen_ask_summary">%1$s en espera</string>
+    <string name="chatscreen_asks_show">Mostrar las preguntas pendientes</string>
+    <string name="chatscreen_asks_hide">Ocultar las preguntas pendientes</string>
     <string name="chatscreen_answer">Responder</string>
     <string name="chatscreen_needs_info">%1$s necesita un dato</string>
     <string name="chatscreen_skip">Omitir</string>

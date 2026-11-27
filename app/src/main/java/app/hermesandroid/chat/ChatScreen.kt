@@ -25,6 +25,9 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.combinedClickable
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.draggable
+import androidx.compose.foundation.gestures.rememberDraggableState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -43,9 +46,11 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -57,6 +62,8 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
@@ -69,6 +76,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
@@ -227,9 +235,36 @@ fun ChatScreen(graph: AppGraph, onMenu: () -> Unit, onComposer: (Dp) -> Unit = {
                     }
                 }
                 val density = LocalDensity.current
+                // The asks drawer: the pending asks sit above the composer and a batch is taller than the screen,
+                // which buries the reply they came with. Its grabber folds them away; a new ask unfolds them again.
+                val asks = s.requests
+                val changes = graph.phone.changes.open
+                val openAsks = asks.size + changes.size
+                var drawer by rememberSaveable { mutableStateOf(true) }
+                var seenAsks by rememberSaveable { mutableIntStateOf(openAsks) }
+                LaunchedEffect(openAsks) {
+                    // An ask the user cannot see is an ask that never gets answered, so arriving means unfolding.
+                    if (openAsks == 0 || openAsks > seenAsks) drawer = true
+                    seenAsks = openAsks
+                }
                 Column(Modifier.navigationBarsPadding().imePadding().animateContentSize(Motion.enter()).onSizeChanged { onComposer(with(density) { it.height.toDp() }) }) {
-                    s.requests.forEach { RequestCard(s, it) }
-                    graph.phone.changes.open.forEach { PhoneChangeCard(graph, it) }
+                    if (openAsks > 0) AskDrawer(
+                        open = drawer,
+                        summary = asksSummary(asks, changes),
+                        icon = if (asks.any { it.method == "approval" }) AF.VerifiedUser else AF.ContactSupport,
+                        tint = if (asks.any { it.method == "approval" }) c.attention else c.accent,
+                        onToggle = { drawer = !drawer },
+                    )
+                    // Folded, the asks keep their place in composition — a half-typed answer survives the peek at
+                    // the chat — they are only laid out and drawn in a box of zero height.
+                    Box(Modifier.fillMaxWidth().weight(1f, fill = false).clipToBounds().then(if (drawer) Modifier else Modifier.height(0.dp))) {
+                        // A batch of questions is taller than the screen in landscape. The asks scroll under the
+                        // composer, so the last question, its Answer button and the field to type in stay reachable.
+                        Column(Modifier.fillMaxWidth().verticalScroll(rememberScrollState())) {
+                            asks.forEach { RequestCard(s, it) }
+                            changes.forEach { PhoneChangeCard(graph, it) }
+                        }
+                    }
                     Composer(s, s.chatProfile ?: graph.profile, onModel = { sheet = Sheet.Model }, onContext = { sheet = Sheet.Context }, onAgents = { sheet = Sheet.Agents })
                 }
             }
@@ -650,6 +685,70 @@ private fun SystemNote(text: String, label: String, error: Boolean, command: Boo
 }
 
 // ---- approval / clarify / secret cards ----
+
+/** What the folded drawer says: "2 questions · 1 approval waiting". */
+@Composable
+private fun asksSummary(asks: List<ServerRequest>, changes: List<app.hermesandroid.phone.PhoneChange>): String {
+    // A clarify request carries its whole batch inside one request (`questions[]`), so the bar counts the
+    // questions — counting the requests folded three of them down to "1 question".
+    val clarify = asks.filter { it.method != "approval" }
+    val q = clarify.sumOf { questionsOf(it.params).first.size }
+    val a = asks.size - clarify.size
+    val parts = buildList {
+        if (q > 0) add(pluralStringResource(R.plurals.chatscreen_ask_questions, q, q))
+        if (a > 0) add(pluralStringResource(R.plurals.chatscreen_ask_approvals, a, a))
+        if (changes.isNotEmpty()) add(pluralStringResource(R.plurals.chatscreen_ask_changes, changes.size, changes.size))
+    }
+    return stringResource(R.string.chatscreen_ask_summary, parts.joinToString(" · "))
+}
+
+/**
+ * The grabber of the asks drawer. The pending asks stack above the composer, and a batch of them is taller
+ * than the phone: the reply the questions came with — usually the reason for them — is scrolled off screen.
+ * Pull this down (or tap it) to fold the asks away and read the chat; pull it up to bring them back and
+ * answer. The composer keeps its place at the bottom, so folding costs nothing but the asks themselves.
+ */
+@Composable
+private fun AskDrawer(open: Boolean, summary: String, icon: ImageVector, tint: Color, onToggle: () -> Unit) {
+    val c = C.colors
+    val slop = with(LocalDensity.current) { 24.dp.toPx() }
+    var drag by remember { mutableFloatStateOf(0f) }
+    val chevron by animateFloatAsState(if (open) 0f else 180f, Motion.ease(), label = "asks_chevron")
+    val shape = RoundedCornerShape(18.dp)
+    Column(
+        Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 14.dp, vertical = 4.dp)
+            // The handle trails the finger a third of the pull, so the gesture is felt before the fold lands.
+            .graphicsLayer { translationY = (drag * 0.35f).coerceIn(-slop, slop) }
+            .then(if (open) Modifier else Modifier.glass(shape))
+            .draggable(
+                orientation = Orientation.Vertical,
+                state = rememberDraggableState { drag += it },
+                onDragStarted = { drag = 0f },
+                onDragStopped = { velocity ->
+                    val pulled = drag
+                    drag = 0f
+                    // Down folds the asks, up brings them back: a flick decides it, a slow pull needs intent.
+                    if (open) { if (pulled > slop || velocity > slop * 6f) onToggle() }
+                    else if (pulled < -slop || velocity < -slop * 6f) onToggle()
+                },
+            )
+            .semantics { contentDescription = summary }
+            .pressable(label = stringResource(if (open) R.string.chatscreen_asks_hide else R.string.chatscreen_asks_show), haptic = Haptic.Light) { onToggle() }
+            .padding(horizontal = 14.dp, vertical = 9.dp)
+            .heightIn(min = 40.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(7.dp, Alignment.CenterVertically),
+    ) {
+        Box(Modifier.width(30.dp).height(4.dp).clip(CircleShape).background(c.secondary.copy(alpha = 0.4f)))
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(7.dp)) {
+            Icon(icon, null, tint = tint, modifier = Modifier.size(15.dp))
+            Text(summary, style = CType.caption2.bold().copy(letterSpacing = 0.4.sp), color = c.secondary, modifier = Modifier.weight(1f))
+            Icon(AF.ExpandMore, null, tint = c.secondary, modifier = Modifier.size(17.dp).rotate(chevron))
+        }
+    }
+}
 
 @Composable
 private fun RequestCard(s: ChatState, r: ServerRequest) {
