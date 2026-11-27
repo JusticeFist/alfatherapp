@@ -200,12 +200,16 @@ fun PulseScreen(graph: AppGraph, onBack: () -> Unit, onOpenChat: (String) -> Uni
             val pageList = rememberPageList()
             LazyColumn(state = pageList, modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(bottom = 24.dp)) {
                 row("head") {
-                    ScreenHeader(stringResource(R.string.pulsepage_eyebrow), "Pulse", "%02d".format(pending.size))
-                    Help(
-                        stringResource(R.string.pulsepage_help, defaultProfileTitle),
-                        Modifier.padding(start = 20.dp, end = 20.dp, bottom = 8.dp),
-                    )
-                    feed.error?.let { ErrorState(it) { scope.launch { feed.load() } } }
+                    // A row lays its content out in a Box, and a Box stacks its children: these three
+                    // painted on top of one another. The head is a Column, like every other page's.
+                    Column {
+                        ScreenHeader(stringResource(R.string.pulsepage_eyebrow), "Pulse", "%02d".format(pending.size))
+                        Help(
+                            stringResource(R.string.pulsepage_help, defaultProfileTitle),
+                            Modifier.padding(start = 20.dp, end = 20.dp, bottom = 8.dp),
+                        )
+                        feed.error?.let { ErrorState(it) { scope.launch { feed.load() } } }
+                    }
                 }
                 when {
                     cards == null -> row("wait") { Skeleton() }
